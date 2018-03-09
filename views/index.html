@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>生产订单发货管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="stylesheets/login.css" type="text/css" rel="stylesheet">
+</head>
+<body >
+    <tr>
+        <td width="202">
+            <div class="message">欢迎使用生产订单发货管理系统</div>
+        </td>
+    </tr>
+    <table width="340" border="0" align="center" cellpadding="06" cellspacing="0" id="logintable">
+        <tr height="30" valign="top">
+            <td>
+                <div class="userlogin"><h4>账号登录</h4></div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><input name="username" type="text" id="username" value="" placeholder="用户名" ></td>
+        </tr>
+        <tr>
+            <td align="center"><input name="password" type="password" id="password" value="" placeholder="密码"></td>
+        </tr>
+        <tr>
+            <td id="tip"> </td>
+        </tr>
+        <tr>
+            <td align="left" class="rememberme_auto">
+                <div class="row forget-password">
+                    	<span class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        	<input type="checkbox" name="rememberMe" id="rememberMe" value="true" class="auto-login" tabindex="4">
+                        	<label for="rememberMe">下次自动登录</label>
+                        </span>
+                        <span class="forget" data-mod="popu_26">
+                        	<a href="http://wpa.qq.com/msgrd?v=1&uin=42687880&site=qq&menu=yes" tabindex="5" target="_blank">忘记密码</a>
+                        </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><button type="submit" class="submit layui-btn" id="login" >登录</button></td>
+        </tr>
+    </table>
+</body>
+<script src="javascripts/jquery-3.3.1.min.js"></script>
+<script src="layer/layer.js"></script>
+<script>
+    $(function () {
+        $("#login").click(function () {
+            if ($("#username").val().length == 0){
+                layer.msg("请输入用户名");
+                return;
+            }
+            if ($("#password").val().length == 0){
+                layer.msg("请输入密码");
+                return;
+            }
+            $.ajax({
+                url:"/login",
+                type:"POST",
+                data:{
+                    username:$("#username").val(),
+                    password:$("#password").val()
+                },
+                success:function (res) {
+                   console.log(res.toString());
+                   var result = eval('(' +  res.toString() + ')');
+                   if(result.code==0){
+                      window.location.href="home";
+                   }else{
+                       layer.msg(result.msg);
+                   }
+                },
+                error:function (err) {
+                    console.log(err);
+                }
+            })
+        })
+    });
+</script>
+</html>

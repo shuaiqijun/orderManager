@@ -1,0 +1,94 @@
+body {
+    background-color: #F5F5F5;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#666;
+}
+
+input {
+    padding: 9px;
+    border: solid 1px #E5E5E5;
+    outline: 0;
+    width: 200px;
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%,#EEEEEE),to(#FFFFFF));
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    line-height: 100%;
+    font-weight: normal;
+    font-variant: normal;
+    color: #617798;
+}
+
+.submit {
+    width: 220px;
+    padding: 9px 15px;
+    background: #c90a16;
+    border: 0;
+    font-size: 14px;
+    color: #FFFFFF;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+input:hover,
+input:focus {
+    border-color: #C9C9C9;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+    color: #617798;
+}
+
+#logintable {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fefefe;
+    border: 1px solid #CCC;
+    color: #333;
+    box-shadow:0px 0px 8px #cccccc;
+    -moz-box-shadow:0px 0px 8px #cccccc;
+    -webkit-box-shadow:0px 0px 8px #cccccc;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding:10px;
+    margin-top: 12px;
+}
+
+.message {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    text-shadow: -1px -1px 1px #cccccc;
+    filter: dropshadow(color=#ffffff, offx=1, offy=1);
+    color: #000000;
+}
+.userlogin {
+    margin-left: 41px;
+    color: #617798;
+}
+.forget-password {
+    color: #4d5e73;
+    margin-left: 25px;
+    font-size: 10px;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.auto-login {
+    width: 12px;
+    margin-left: 60px;
+    margin-bottom: 2px;
+}
+.rememberme_auto {
+    width: 12px;
+    margin-left: 62px;
+    margin-bottom: 2px;
+}
+.forget {
+    margin-left: 85px;
+}
