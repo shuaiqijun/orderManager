@@ -13,15 +13,22 @@
     <script src="../layer/layer.js"></script>
 </head>
 <body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="home-logo">销售管理系统</div>
+<nav class="layui-layout layui-layout-admin">
+    <header class="layui-header">
+        <div class="home-logo"><img src="img/logo_erp.png" style="margin-right: 5px" />销售管理系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <div class="headNavigation">
             <ul class="layui-nav">
-                <li class="layui-nav-item"><a href="">
-                    <i class="layui-icon" style="margin-right: 3px; font-size: 20px; ">&#xe68e;</i>主页</a></li>
-                <li class="layui-nav-item"><a href=""><i class="layui-icon" style="margin-right: 3px; font-size: 18px;">&#xe613;</i>用户管理</a></li>
+                <li class="layui-nav-item"><a href="/home">
+                    <i class="layui-icon" style="margin-right: 3px; font-size: 20px; ">&#xe68e;</i>主页</a>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:"><img src="img/user.png" style="margin-right: 3px; margin-bottom: 5px;width: 20%;height: 70%" />用户管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">新增用户</a></dd>
+                        <dd><a href="">角色权限</a></dd>
+                        <dd><a href="">用户列表</a></dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item"><a href="javascript:"><i class="layui-icon" style="margin-right: 3px; font-size: 20px; color: #FFFFFF;">&#xe631;</i>数据管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="">数据备份</a></dd>
@@ -47,217 +54,165 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </header>
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item" id="order_item"><a href="javascript:void(0);">订单管理</a>
+                <li class="layui-nav-item" id="order_item"><a href="javascript:void(0);">
+                    <i class="layui-icon" style="margin-right: 3px; font-size: 22px; color: #FFFFFF;">&#xe60a;</i>订单管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">订单查询</a></dd>
-                        <dd><a href="">新增订单</a></dd>
-                        <dd><a href="">订单列表</a></dd>
-                        <dd><a href="">内部订单</a></dd>
+                        <dd><a href="page/order_search.html">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe615;</i>订单查询</a>
+                        </dd>
+                        <dd><a href="">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增订单</a>
+                        </dd>
+                        <dd><a href="">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe63c;</i>订单列表</a>
+                        </dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item" id="customer_item" ><a href="javascript:void(0);">客户管理</a>
+                <li class="layui-nav-item" ><a href="javascript:void(0);">
+                    <img src="img/customer_manager.png" style="margin-right: 3px;width: 12%;height: 40%" />客户管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">新增客户</a></dd>
-                        <dd><a href="">客户列表</a></dd>
+                        <dd><a id="customer_item" href="javascript:void(0);">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增客户</a>
+                        </dd>
+                        <dd><a href="">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe613;</i>客户列表</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item" id="product_item"><a  href="javascript:void(0);">产品管理</a></li>
-                <li class="layui-nav-item" id="manufacturing_item"><a  href="javascript:void(0);">生产管理</a></li>
-                <li class="layui-nav-item" id="delivery _item"><a  href="javascript:void(0);">发货管理</a></li>
-                <li class="layui-nav-item" id="sales_item"><a  href="javascript:void(0);">销售管理</a></li>
+                <li class="layui-nav-item" id="product_item"><a  href="javascript:void(0);">
+                    <img src="img/manufacturing_manager.png" style="margin-right: 3px;width: 12%;height: 40%"/>产品管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a id="add_product" href="javascript:void(0);">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增牌号</a>
+                        </dd>
+                        <dd><a href="">
+                            <img src="img/manufacturing_list.png" style="margin-left: 6px;width: 13%;height: 50%">产品列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="manufacturing_item"><a  href="javascript:void(0);"><img src="img/manufacturing.png" style="margin-right: 3px;width: 13%;height: 45%"/>生产管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="page/order_search.html">
+                            <img src="img/add_manufacturing.png" style="margin-left: 10px;width: 10%;height: 50%">新增产量</a>
+                        </dd>
+                        <dd><a href="page/order.html">
+                            <img src="img/fahuoqingdan.png" style="margin-left: 10px;width: 12%;height: 50%">生产数据</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="delivery _item"><a  href="javascript:void(0);"><img src="img/deliver_goods1.png"style="width: 15%;height: 50%"/>发货管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="page/order_search.html">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增发货</a>
+                        </dd>
+                        <dd><a href="">
+                            <img class="" src="img/fahuoqingdan.png" style="margin-left: 8px;width: 12%;height: 50%" />发货清单</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="sales_item"><a  href="javascript:void(0);">
+                    <i class="layui-icon" style="margin-right: 3px; font-size: 20px; color: #FFFFFF;">&#xe65e;</i>销售管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="page/order_search.html">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe615;</i>待开发票订单</a>
+                        </dd>
+                        <dd><a href="">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>已开发票订单</a>
+                        </dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div class="head-info layui-bg-green" id="welcom_info">
-            <div><img src="../img/userlogo.jpg" class="layui-nav-img"><%= realname %>你好，欢迎使用销售管理系统。<span style="color: #f5e79e" id="welcom"></span>（我们将会实时更新新的模块，请随时关注）
+            <div><img src="../img/userlogo.jpg" class="layui-nav-img"><%= realname %> 你好，欢迎使用销售管理系统。<span style="color: #f5e79e" id="welcom"></span>（我们将会实时更新新的模块，请随时关注）
                 <i class="layui-icon closeinfo" id="close_info" onclick="javascript:turnoff('welcom_info')">&#x1006;</i>
             </div>
         </div>
-        <div class="layui-row layui-shortcut layui-col-space15" id="shortcut">
-            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 layui-col">
+        <div class="layui-row larry-shortcut layui-col-space15 information_panel" id="shortcut" style="margin-top: 15px">
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
                 <section class="shortcut layui-ico-rotate">
-                    <a class="pos-r" data-url='' data-icon="larry-neirongguanli1">
-                        <div class="layui-ico layui-bg-blue"><i class="layui-icon larry-neirongguanli1"></i></div>
-                        <div class="larry-value">
+                    <a class="pos-r" data-url='' data-icon="">
+                        <div class="larry-ico layui-bg-blue"><img src="img/unfinished_order.png" class="" /></div>
+                        <div class="larry-value unfinished">
                             <span class="nums">100</span>
                             <cite>未完成订单</cite>
                         </div>
                     </a>
                 </section>
             </div>
-            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 layui-col">
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='' data-icon="larry-huiyuanguanli">
+                            <div class="larry-ico layui-bg-green"><img src="img/daifahuo.png" class="" /></div>
+                            <div class="larry-value unfinished">
+                                <span class="nums">50</span>
+                                <cite>待发货订单</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 layui-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='html/main.html' data-icon="larry-neirongfabu">
+                            <div class="larry-ico layui-bg-purple"><img src="img/deliver_goods.png" class="" /></div>
+                            <div class="larry-value unfinished">
+                                <span class="nums">100</span>
+                                <cite>发货数据</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='html/main.html' data-icon="larry-zhanghuxinxi">
+                            <div class="larry-ico layui-bg-cyan"><img src="img/shengchanshuju.png" class="" /></div>
+                            <div class="larry-value unfinished">
+                                <cite class="un-nums">生产数据</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
                 <section class="shortcut pos-r layui-ico-rotate">
-                    <a class="pos-r" data-url='' data-icon="larry-huiyuanguanli">
-                        <div class="larry-ico larry-bg-red"><i class="larry-icon larry-huiyuanguanli"></i></div>
-                        <div class="larry-value">
-                            <span class="nums">50</span>
-                            <cite>已完成订单</cite>
-                        </div>
-                    </a>
-                </section>
-            </div>
-            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
-                <section class="shortcut pos-r larry-ico-rotate">
-                    <a class="pos-r" data-url='html/main.html' data-icon="larry-neirongfabu">
-                        <div class="larry-ico larry-bg-purple"><i class="larry-icon larry-neirongfabu"></i></div>
-                        <div class="larry-value">
-                            <span class="nums">100</span>
-                            <cite>发货计划</cite>
-                        </div>
-                    </a>
-                </section>
-            </div>
-            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
-                <section class="shortcut pos-r larry-ico-rotate">
-                    <a class="pos-r" data-url='html/main.html' data-icon="larry-zhanghuxinxi">
-                        <div class="larry-ico larry-bg-two"><i class="larry-icon larry-zhanghuxinxi"></i></div>
-                        <div class="larry-value">
-                            <cite class="un-nums">待开票信息</cite>
-                        </div>
-                    </a>
-                </section>
-            </div>
-            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
-                <section class="shortcut pos-r larry-ico-rotate">
                     <a class="pos-r" data-url='html/persons.html' data-icon="larry-wsmp-setting">
-                        <div class="larry-ico larry-bg-orange"><i class="larry-icon larry-wsmp-setting"></i></div>
-                        <div class="larry-value">
-                            <cite class="un-nums">今日生产信息</cite>
+                        <div class="larry-ico layui-bg-orange"><img src="img/sale_date.png" /></div>
+                        <div class="larry-value unfinished">
+                            <cite class="un-nums">销售数据</cite>
                         </div>
                     </a>
                 </section>
             </div>
-            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
-                <section class="shortcut pos-r larry-ico-rotate">
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
+                <section class="shortcut pos-r layui-ico-rotate">
                     <a class="pos-r" data-url='html/menus.html' data-icon="larry-caidanguanli3"  data-id="larry-1006" data-group="0">
-                        <div class="larry-ico larry-bg-green"><i class="larry-icon larry-caidanguanli3"></i></div>
-                        <div class="larry-value">
-                            <cite class="un-nums">待开发票信息</cite>
+                        <div class="larry-ico layui-bg-red"><img src="img/fapiao.png" /></div>
+                        <div class="larry-value unfinished">
+                            <cite class="un-nums">发票数据</cite>
                         </div>
                     </a>
                 </section>
             </div>
         </div>
-        <div class="layui-footer">
+        <footer class="layui-footer">
             <!-- 底部固定区域 -->
             <a href="http://www.rsson.cn" target="_blank"> © www.rsson.cn - 技术支持</a>
-        </div>
+        </footer>
     </div>
-</div>
-<script>
-    function getCurDate() {
-        var mydate = new Date();
-        var week;
-        switch (mydate.getDay()){
-            case 1: week="星期一"; break;
-            case 2: week="星期二"; break;
-            case 3: week="星期三"; break;
-            case 4: week="星期四"; break;
-            case 5: week="星期五"; break;
-            case 6: week="星期六"; break;
-            default: week="星期天";
-        }
-        var years = mydate.getFullYear();
-        var month = add_zero(mydate.getMonth()+1);
-        var days = add_zero(mydate.getDate());
-        var hours = add_zero(mydate.getHours());
-        var minutes = add_zero(mydate.getMinutes());
-        var seconds=add_zero(mydate.getSeconds());
-
-        function add_zero(temp)
-        {
-            if(temp<10) return "0"+temp;
-            else return temp;
-        }
-
-        var ndate = "现在时间：" + years + "年" + month + "月" + days + "日 " + hours + ":" + minutes + ":" + seconds + " " + week;
-        document.getElementById("welcom").innerHTML = ndate;
-
-//        setInterval("getCurDate();",2000);
-        console.log(ndate)
-    }
-    getCurDate();
-</script>
+</nav>
+<script src="javascripts/welcom_info.js"></script>
 <script>
     function turnoff(obj) {
         document.getElementById(obj).style.display="none";
     }
 </script>
-<script>
-    $(function () {
-        $("#btnExcelInDB").click(function () {
-            var $ = layui.jquery;
-            var that = this;
-            layer.open({
-                type: 2 //此处以iframe举例
-                , title: '支持后缀名为.xls、.xlsx的Excel模板导入'
-                , area: ['600px', '360px']
-                , shade: 0
-                , maxmin: true
-                , offset: [ //为了演示，随机坐标
-//                    Math.random() * ($(window).height() - 300)
-//                    , Math.random() * ($(window).width() - 390)
-                    100,400
-                ]
-                , content: 'excelindb'
-//                , btn: ['关闭'] //只是为了演示
-//                , yes: function () {
-//                    layer.closeAll();
-//                }
-
-                , zIndex: layer.zIndex //重点1
-                , success: function (layero) {
-                    layer.btnExcelInDB(layero); //重点2
-                }
-            });
-
-            $('#layerDemo .layui-btn').on('click', function () {
-                var othis = $(this), method = othis.data('method');
-                active[method] ? active[method].call(this, othis) : '';
-            });
-        });
-
-        $("#addOrder").click(function () {
-            var $ = layui.jquery;
-            var that = this;
-            layer.open({
-                type: 2 //此处以iframe举例
-                , title: '新增订单'
-                , area: ['800px', '600px']
-                , shade: 0
-                , maxmin: true
-                , offset: [ //为了演示，随机坐标
-//                    Math.random() * ($(window).height() - 300)
-                    30
-//                    , Math.random() * ($(window).width() - 390)
-                ]
-                , content: 'add_order'
-//                , btn: [''] //只是为了演示
-//                , yes: function () {
-//                    layer.closeAll();
-//                }
-
-                , zIndex: layer.zIndex //重点1
-                , success: function (layero) {
-                    layer.btnExcelInDB(layero); //重点2
-                }
-            });
-
-            $('#layerDemo .layui-btn').on('click', function () {
-                var othis = $(this), method = othis.data('method');
-                active[method] ? active[method].call(this, othis) : '';
-            });
-        })
-    })
-
-</script>
+<script src="javascripts/data_table.js"></script>
 </body>
 </html>
