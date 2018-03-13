@@ -4,7 +4,7 @@ var mongoose = require('./db.js'),
 
 var  ProductSchema = new Schema({
     product_no:String,
-    name:{ type:String, unique: true },
+    name:String,                    //牌号
     spec:String,                    //基本规格
     description:String,             //备注描述
     color:String,                   //颜色
