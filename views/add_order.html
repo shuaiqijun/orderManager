@@ -11,12 +11,13 @@
 </head>
 <body>
 <form class="layui-form" action="">
-    <div class="layui-form-item">
-        <label class="layui-form-label">订单日期</label>
-        <div class="">
-            <input class="order_data" id="order_Date" placeholder="yyyy-mm-dd" type="text">
+        <div class="layui-inline">
+            <label class="orderDate">日期:</label>
+            <div class="layui-input-inline">
+                <input class="input_box" id="orderDate" placeholder="yyyy-mm-dd" type="text">
+            </div>
         </div>
-    </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">订单号</label>
         <div class="layui-input-block">
@@ -236,17 +237,6 @@
         </div>
     </div>
 </form>
-<script>
-    //日期范围选择
-    layui.use('laydate', function() {
-        var laydate = layui.laydate;
-        laydate.render({
-            elem: '#startDate'
-        });
-        laydate.render({
-            elem: '#endDate'
-        });
-    });
-</script>
+<script src="javascripts/date_choice.js"></script>
 </body>
 </html>

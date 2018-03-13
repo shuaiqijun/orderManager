@@ -1,0 +1,34 @@
+<header class="layui-header">
+        <div class="home-logo">销售管理系统</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="headNavigation">
+            <ul class="layui-nav">
+                <li class="layui-nav-item"><a href="">
+                    <i class="layui-icon" style="margin-right: 3px; font-size: 20px; ">&#xe68e;</i>主页</a></li>
+                <li class="layui-nav-item"><a href=""><i class="layui-icon" style="margin-right: 3px; font-size: 18px;">&#xe613;</i>用户管理</a></li>
+                <li class="layui-nav-item"><a href="javascript:"><i class="layui-icon" style="margin-right: 3px; font-size: 20px; color: #FFFFFF;">&#xe631;</i>数据管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">数据备份</a></dd>
+                        <dd><a href="">导入备份</a></dd>
+                        <dd><a href="">导出备份</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:"><i class="layui-icon" style="margin-right: 3px; font-size: 20px; color: #FFFFFF;">&#xe620;</i>其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item login_success">
+                    <a href="javascript:"><img src="../img/userlogo.jpg" class="layui-nav-img"><%= realname %></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="user">个人中心</a></dd>
+                        <dd><a href="changePassword">修改密码</a></dd>
+                        <dd><a href="/">退出登录</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+</header>
