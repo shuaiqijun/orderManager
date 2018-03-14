@@ -13,6 +13,12 @@ exports.queryPlan = function (req,res) {
     });
 }
 
-exports.queryPlan = function (req,res) {
+exports.addPlan = function (req,res) {
+    var orderno = req.body.orderno ;
+    var products = req.body.products ;
+    var startTime = req.body.startTime ;
+    var endTime = req.body.endTime ;
+
+    
 
 }
