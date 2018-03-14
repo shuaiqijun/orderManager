@@ -1,8 +1,56 @@
-.order_data {
-    height:26px;
-    line-height:38px;
-    border-width:1px;
-    border-style:solid;
-    background-color:#fff;
-    border-radius:1px
+.orderDate {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+.order-date-input {
+    width:120px;
+    height:30px;
+    line-height: normal;
+    overflow:hidden;
+    border-radius:3px;
+    border:1px solid #b2b2b2;
+    margin-left: 2px;
+    text-align: center;
+}
+.order-number-input {
+    width:120px;
+    height:30px;
+    line-height: normal;
+    overflow:hidden;
+    border-radius:3px;
+    border:1px solid #b2b2b2;
+    margin-left: 2px;
+    text-align: center;
+}
+.order-number-input::-webkit-input-placeholder{
+    font-size: 12px;
+    line-height: 50px;
+}
+.customerdate {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+.kaipiao {
+    float:left;
+    display:block;
+    margin-left: 15px;
+    line-height:20px;
+    text-align:left;
+}
+.kaipiao-text {
+    min-height:100px;
+    border-radius:0 0 2px 2px;
+    position:relative;
+    border:1px solid #b2b2b2;
+    margin-left: 3px;
+    width: 600px;
+    height: 200px;
+    outline:0;-webkit-appearance:none;transition:all .3s;-webkit-transition:all .3s;box-sizing:border-box;
+}
+.danxuankuang {
+    min-height:36px;
+    position:relative;
+    margin:0;left:0;top:-1px
 }
