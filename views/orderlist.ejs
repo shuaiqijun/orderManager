@@ -1,0 +1,38 @@
+<div class="search">
+    <div class="condition-wrapper layui-nav-item">
+        <div class="layui-inline">
+            <label class="startDate">起始日期:</label>
+            <div class="layui-input-inline">
+                <input class="input_box" id="startDate" placeholder="yyyy-mm-dd" type="text">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="endDate">结束日期:</label>
+            <div class="layui-input-inline">
+                <input class="input_box" id="endDate" placeholder="yyyy-mm-dd" type="text">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="customerName">客户名称:</label>
+            <div class="layui-input-inline">
+                <input name="ctl00$content$txtCode" type="text" id="content_txtCode" placeholder="客户名称"  class="input_box1" />
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="orderNumber">订单号:</label>
+            <div class="layui-input-inline">
+                <input name="ctl00$content$txtCardNo" type="text" id="content_txtCardNo" placeholder="合同编号"  class="input_box1" maxlength="8" onkeyup="value=value.replace(/[^\w\.\/]/ig,&#39;&#39;)" />
+                &nbsp;
+            </div>
+        </div>
+        &nbsp;
+        <input name="ctl00$content$btnFind" type="submit" id="content_btnFind" value="查询" class="btn btn-primary" />
+        <button type="button" id="addOrder1" class="btn btn-success">新增订单</button>
+        <button id="btnExcelInDB" type="button" class="btn btn-info">导入订单</button>
+        <button id="btnExcelToDB" type="button" class="btn btn-info" onclick="downloadExl(jsono)">导出订单</button>
+        <button id="btnPrint" type="button" value="打印" class="btn btn-info">打印</button>
+    </div>
+</div>
+<div>
+    <table class="layui-hide" id="order_list" lay-filter="mtable"></table>
+</div>

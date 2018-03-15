@@ -63,7 +63,7 @@ layui.use(['element','table', 'layer','jquery'], function() {
     $('#order_item').on('click', function() {
         console.log("order_item  click");
         table.render({
-            elem: '#orderData_table'
+            elem: '#order_list_test'
             ,height: 485
             ,url: '../test/data1.json' //数据接口
             ,page: true //开启分页
@@ -129,6 +129,7 @@ layui.use(['element','table', 'layer','jquery'], function() {
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
         });
+
     });
 
     layui.use('table', function() {
@@ -136,7 +137,7 @@ layui.use(['element','table', 'layer','jquery'], function() {
         var form = layui.form;
         //第一个实例
         table.render({
-            elem: '#orderData_table'
+            elem: '#order_list'
             ,height: 485
             ,url: '../test/data1.json' //数据接口
             ,page: true //开启分页
@@ -261,6 +262,135 @@ layui.use(['element','table', 'layer','jquery'], function() {
         });
     });
 
+    $("#addOrder1").click(function () {
+        var $ = layui.jquery;
+        var that = this;
+        layer.open({
+            type: 2 //此处以iframe举例
+            , title: '新增订单'
+            , area: ['800px', '600px']
+            , shade: 0
+            , maxmin: true
+            , offset: [ //为了演示，随机坐标
+//                    Math.random() * ($(window).height() - 300)
+                30,
+//                    , Math.random() * ($(window).width() - 390)
+            ]
+            , content: '/add_order'
+//                , btn: [''] //只是为了演示
+//                , yes: function () {
+//                    layer.closeAll();
+//                }
+
+            , zIndex: layer.zIndex //重点1
+            , success: function (layero) {
+                layer.btnExcelInDB(layero); //重点2
+            }
+        });
+
+        $('#layerDemo .layui-btn').on('click', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+    });
+
+//新增客户弹层
+    $("#addcustomer").click(function () {
+        var $ = layui.jquery;
+        var that = this;
+        layer.open({
+            type: 2 //此处以iframe举例
+            , title: '新增客户'
+            , area: ['800px', '600px']
+            , shade: 0
+            , maxmin: true
+            , offset: [ //为了演示，随机坐标
+//                    Math.random() * ($(window).height() - 300)
+                30,
+//                    , Math.random() * ($(window).width() - 390)
+            ]
+            , content: '/add_customer'
+//                , btn: [''] //只是为了演示
+//                , yes: function () {
+//                    layer.closeAll();
+//                }
+
+            , zIndex: layer.zIndex //重点1
+            , success: function (layero) {
+                layer.btnExcelInDB(layero); //重点2
+            }
+        });
+
+        $('#layerDemo .layui-btn').on('click', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+    });
+//新增牌号弹层
+    $("#addproduct").click(function () {
+        var $ = layui.jquery;
+        var that = this;
+        layer.open({
+            type: 2 //此处以iframe举例
+            , title: '新增产品'
+            , area: ['800px', '600px']
+            , shade: 0
+            , maxmin: true
+            , offset: [ //为了演示，随机坐标
+//                    Math.random() * ($(window).height() - 300)
+                30,
+//                    , Math.random() * ($(window).width() - 390)
+            ]
+            , content: '/add_product'
+//                , btn: [''] //只是为了演示
+//                , yes: function () {
+//                    layer.closeAll();
+//                }
+
+            , zIndex: layer.zIndex //重点1
+            , success: function (layero) {
+                layer.btnExcelInDB(layero); //重点2
+            }
+        });
+
+        $('#layerDemo .layui-btn').on('click', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+    });
+    //excel导入弹层
+    $("#btnExcelInDB").click(function () {
+        var $ = layui.jquery;
+        var that = this;
+        layer.open({
+            type: 2 //此处以iframe举例
+            , title: '订单导入'
+            , area: ['600px', '300px']
+            , shade: 0
+            , maxmin: true
+            , offset: [ //为了演示，随机坐标
+//                    Math.random() * ($(window).height() - 300)
+                120,300
+
+//                    , Math.random() * ($(window).width() - 390)
+            ]
+            , content: '/excelindb'
+//                , btn: [''] //只是为了演示
+//                , yes: function () {
+//                    layer.closeAll();
+//                }
+
+            , zIndex: layer.zIndex //重点1
+            , success: function (layero) {
+                layer.btnExcelInDB(layero); //重点2
+            }
+        });
+
+        $('#layerDemo .layui-btn').on('click', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+    });
     //日期范围选择
     layui.use('laydate', function() {
         var laydate = layui.laydate;
@@ -314,3 +444,63 @@ $(function() {
         digitInput($(this), e);
     });
 });
+
+
+//welcom time info
+(function getCurDate() {
+    var mydate = new Date();
+    var week;
+    switch (mydate.getDay()) {
+        case 1:
+            week = "星期一";
+            break;
+        case 2:
+            week = "星期二";
+            break;
+        case 3:
+            week = "星期三";
+            break;
+        case 4:
+            week = "星期四";
+            break;
+        case 5:
+            week = "星期五";
+            break;
+        case 6:
+            week = "星期六";
+            break;
+        default:
+            week = "星期天";
+    }
+    var years = mydate.getFullYear();
+    var month = add_zero(mydate.getMonth() + 1);
+    var days = add_zero(mydate.getDate());
+    var hours = add_zero(mydate.getHours());
+    var minutes = add_zero(mydate.getMinutes());
+    var seconds = add_zero(mydate.getSeconds());
+
+    function add_zero(temp) {
+        if (temp < 10) return "0" + temp;
+        else return temp;
+    }
+
+    var ndate = "现在时间：" + years + "年" + month + "月" + days + "日 " + hours + ":" + minutes + ":" + seconds + " " + week;
+    document.getElementById('welcomtime').innerHTML = ndate;
+
+    // setInterval("getCurDate();",1000);
+    console.log(ndate)
+}());
+
+
+//动态加载网页+点击隐藏DIV块
+function turnoff(obj) {
+    //关闭欢迎信息
+    document.getElementById(obj).style.display="none";
+}
+
+function openOrderList(obj) {
+    //隐藏主区域
+    document.getElementById(obj).style.display="none";
+    //显示主区域
+    document.getElementById('orderlist_div').style.display=""
+}

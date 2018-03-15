@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>订单发货管理系统</title>
+    <link href="/layui/css/layui.css" type="text/css" media="all" rel="stylesheet">
+    <link href="/stylesheets/home.css" type="text/css" media="all" rel="stylesheet">
+    <!--<link rel='stylesheet' href='../stylesheets/larryms.css' />-->
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div><% include header %>></div>
+    <div><% include LeftNavigation %>></div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div id="body_content">
+            <div class="head-info layui-bg-green" id="welcom_info">
+                <div><img src="../img/userlogo.jpg" class="layui-nav-img"><%= realname %> 你好，欢迎使用销售管理系统。<span style="color: #f5e79e" id="welcomtime"></span>（我们将会实时更新新的模块，请随时关注）
+                    <i class="layui-icon closeinfo" id="close_info" onclick="javascript:turnoff('welcom_info')">&#x1006;</i>
+                </div>
+            </div>
+            <div class="layui-row larry-shortcut layui-col-space15 information_panel" id="shortcut" style="margin-top: 15px">
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                    <section class="shortcut layui-ico-rotate">
+                        <a class="pos-r" data-url='' data-icon="">
+                            <div class="larry-ico layui-bg-blue"><img src="img/unfinished_order.png" class="" /></div>
+                            <div class="larry-value unfinished">
+                                <span class="nums">100</span>
+                                <cite>未完成订单</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='' data-icon="larry-huiyuanguanli">
+                            <div class="larry-ico layui-bg-green"><img src="img/daifahuo.png" class="" /></div>
+                            <div class="larry-value unfinished">
+                                <span class="nums">50</span>
+                                <cite>待发货订单</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 layui-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='html/main.html' data-icon="larry-neirongfabu">
+                            <div class="larry-ico layui-bg-purple"><img src="img/deliver_goods.png" class="" /></div>
+                            <div class="larry-value unfinished">
+                                <span class="nums">100</span>
+                                <cite>发货数据</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='html/main.html' data-icon="larry-zhanghuxinxi">
+                            <div class="larry-ico layui-bg-cyan"><img src="img/shengchanshuju.png" class="" /></div>
+                            <div class="larry-value unfinished">
+                                <cite class="un-nums">生产数据</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='html/persons.html' data-icon="larry-wsmp-setting">
+                            <div class="larry-ico layui-bg-orange"><img src="img/sale_date.png" /></div>
+                            <div class="larry-value unfinished">
+                                <cite class="un-nums">销售数据</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col information_panel">
+                    <section class="shortcut pos-r layui-ico-rotate">
+                        <a class="pos-r" data-url='html/menus.html' data-icon="larry-caidanguanli3"  data-id="larry-1006" data-group="0">
+                            <div class="larry-ico layui-bg-red"><img src="img/fapiao.png" /></div>
+                            <div class="larry-value unfinished">
+                                <cite class="un-nums">发票数据</cite>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div id="orderlist_div" style="display: none"><% include orderlist %></div>
+        <div><% include footer %></div>
+    </div>
+</div>
+<script src="/layui/layui.js"></script>
+<script src="/javascripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/home_layui.js" ></script>
+<!--<script>-->
+    <!--function turnoff(obj) {-->
+        <!--document.getElementById(obj).style.display="none";-->
+    <!--}-->
+<!--</script>-->
+<!--<script>-->
+    <!--function closediv(obj) {-->
+        <!--document.getElementById(obj).style.display="none";-->
+        <!--document.getElementById('dongtai').style.display=""-->
+    <!--}-->
+<!--</script>-->
+<!--<script src="layer/layer.js"></script>-->
+</body>
+</html>

@@ -6,17 +6,20 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var index = require('./routes/index');
-var home = require('./routes/home');
-var add_order = require('./routes/add_order');
-var excelindb = require('./routes/excelindb');
 
+var routes = require('./routes/index');
+// var index = require('./routes/index');
+// var home = require('./routes/home');
+// var add_order = require('./routes/add_order');
+// var excelindb = require('./routes/excelindb');
+// var add_customer = require('./routes/add_customer');
+// var add_product = require('./routes/add_product');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', require('ejs').__express);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -27,13 +30,14 @@ app.use(cookieParser());
 //挂载静态资源处理中间件
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 //session持久化配置
 app.use(session({
     secret: "jimmy",
     key: "order",
     cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//超时时间
     saveUninitialized: true,
-    resave: false,
+    resave: false
 }));
 
 //登录验证中间件
@@ -49,11 +53,17 @@ app.use(function(req,res,next){
     }
 });
 
+
+routes(app);
 //路由设置
-app.use('/', index);
-app.use('/home', home);
-app.use('/add_order', add_order);
-app.use('/excelindb', excelindb);
+// app.use('/', index);
+// app.use('/home', home);
+// app.use('/add_order', add_order);
+// app.use('/excelindb', excelindb);
+// app.use('/add_customer',add_customer);
+// app.use('/add_product',add_product);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

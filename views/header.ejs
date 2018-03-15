@@ -1,0 +1,41 @@
+<header class="layui-header">
+    <div class="home-logo"><img src="img/logo_erp.png" style="margin-right: 5px" />销售管理系统</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <div class="headNavigation">
+        <ul class="layui-nav">
+            <li class="layui-nav-item"><a href="/home">
+                    <img src="img/logo_home.png" style="margin-right: 3px; margin-bottom: 5px;width: 30%;height: 80%" />主页</a>
+            </li>
+            <li class="layui-nav-item"><a href="javascript:"><img src="img/user.png" style="margin-right: 3px; margin-bottom: 5px;width: 20%;height: 70%" />用户管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">新增用户</a></dd>
+                    <dd><a href="">角色权限</a></dd>
+                    <dd><a href="">用户列表</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="javascript:"><i class="layui-icon" style="margin-right: 3px; font-size: 20px; color: #FFFFFF;">&#xe631;</i>数据管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">数据备份</a></dd>
+                    <dd><a href="">导入备份</a></dd>
+                    <dd><a href="">导出备份</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:"><i class="layui-icon" style="margin-right: 3px; font-size: 20px; color: #FFFFFF;">&#xe620;</i>其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item login_success">
+                <a href="javascript:"><img src="../img/userlogo.jpg" class="layui-nav-img"><%= realname %></a>
+                <dl class="layui-nav-child">
+                    <dd><a href="user">个人中心</a></dd>
+                    <dd><a href="changePassword">修改密码</a></dd>
+                    <dd><a href="/">退出登录</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</header>

@@ -1,0 +1,72 @@
+ <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item" ><a href="javascript:void(0);">
+                    <i class="layui-icon" style="margin-right: 1px; font-size: 22px; color: #FFFFFF;">&#xe60a;</i>订单管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe615;</i>订单查询</a>
+                        </dd>
+                        <dd><a id="addOrder" href="javascript:void(0);">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增订单</a>
+                        </dd>
+                        <dd><a id="order_item" href="javascript:void(0);" onclick="javascripts:openOrderList('body_content')">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe63c;</i>订单列表</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" ><a href="javascript:void(0);">
+                    <img src="img/customer_manager.png" style="margin-right: 3px;width: 12%;height: 40%" />客户管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a id="addcustomer" href="javascript:void(0);">
+                            <i class="layui-icon" style="margin-left: 10px; margin-right: 3px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增客户</a>
+                        </dd>
+                        <dd><a href="">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 13px; color: #FFFFFF;">&#xe613;</i>客户列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="product_item"><a  href="javascript:void(0);">
+                    <img src="img/manufacturing_manager.png" style="margin-right: 3px;width: 12%;height: 40%"/>产品管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a id="addproduct" href="javascript:void(0);">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增牌号</a>
+                        </dd>
+                        <dd><a href="">
+                            <img src="img/manufacturing_list.png" style="margin-left: 6px;width: 13%;height: 50%">产品列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="manufacturing_item"><a  href="javascript:void(0);"><img src="img/manufacturing.png" style="margin-right: 3px;width: 13%;height: 45%"/>生产管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="page/order_search.html">
+                            <img src="img/add_manufacturing.png" style="margin-left: 10px;width: 10%;height: 50%">新增产量</a>
+                        </dd>
+                        <dd><a href="page/order.html">
+                            <img src="img/fahuoqingdan.png" style="margin-left: 10px;width: 12%;height: 50%">生产数据</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="delivery _item"><a  href="javascript:void(0);"><img src="img/deliver_goods1.png" style="width: 15%;height: 50%"/>发货管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="page/order_search.html">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>新增发货</a>
+                        </dd>
+                        <dd><a href="">
+                            <img class="" src="img/fahuoqingdan.png" style="margin-left: 8px;width: 12%;height: 50%" />发货清单</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="sales_item"><a  href="javascript:void(0);">
+                    <img src="img/sale_manager.png" style="margin-bottom: 5px;width: 16%;height: 50%" />销售管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="page/order_search.html">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe615;</i>待开发票订单</a>
+                        </dd>
+                        <dd><a href="">
+                            <i class="layui-icon" style="margin-left: 10px; font-size: 15px; color: #FFFFFF;">&#xe654;</i>已开发票订单</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+ </div>
