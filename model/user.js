@@ -7,6 +7,6 @@ var  UserSchema = new Schema({
     password:String,
     realname:String,
     phone:String,
-    permission:Number       //1.admin 2.normal
+    permission:String       //1.admin 2.normal
 });
 module.exports = mongoose.model('User',UserSchema);

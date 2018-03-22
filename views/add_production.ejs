@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>新增产品</title>
+    <title>新增生产数据</title>
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
     <link rel="stylesheet" href="stylesheets/add_customer.css" media="all">
 </head>
 <body>
 <form class="layui-form" action="">
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend style="font-size: 16px">产品信息</legend>
+        <legend style="font-size: 16px">生产信息</legend>
     </fieldset>
     <div class="orderDate">
         <div class="layui-input-inline" style="margin-right: 80px">
@@ -38,10 +38,16 @@
                 <input type="text" name="Grade" id="Grade" lay-verify="required" placeholder="产品牌号" autocomplete="off" class="order-number-input">
             </div>
         </div>
-        <div class="layui-input-inline" >
+        <div class="layui-input-inline" style="margin-right: 80px">
             <label>产品规格:</label>
             <div class="layui-input-inline">
                 <input type="text" name="product_Specifications" id="product_Specifications" lay-verify="required" placeholder="请输入产品规格" autocomplete="off" class="order-number-input">
+            </div>
+        </div>
+        <div class="layui-input-inline">
+            <label>生产数量:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="quantity" id="quantity" lay-verify="required" placeholder=“单位KG” autocomplete="off" class="order-number-input">
             </div>
         </div>
     </div>
@@ -65,12 +71,12 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="layui-form-item layui-form-text">
         <label class="kaipiao">备注信息:</label>
         <div class="">
-                <textarea placeholder="" class="kaipiao-text" lay-verify="required" id="product_remarks"></textarea>
+            <textarea placeholder="" class="kaipiao-text" lay-verify="required" id="product_remarks"></textarea>
         </div>
     </div>
 

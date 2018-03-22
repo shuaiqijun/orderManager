@@ -1,40 +1,49 @@
 var express = require('express');
 var routers = express.Router();
 var UserModel = require('../model/user.js');
+var ProductModel = require('../model/product.js');
 
 module.exports = function(app) {
     app.get('/', function (req, res) {
         res.render('index', { title: 'index' });
     });
-
-    app.get('/add_customer', function (req, res) {
-        var user = req.session.user ;
-        console.log(user.realname);
-        res.render('add_customer',{ realname: user.realname });
-    });
-
     app.get('/home', function (req, res) {
         var user = req.session.user ;
         console.log(user.realname);
-        res.render('home',{ realname: user.realname });
+        console.log(user.permission);
+        res.render('home',{ realname: user.realname, permission: user.permission});
     });
     app.get('/add_order', function (req, res) {
         var user = req.session.user ;
         console.log(user.realname);
         res.render('add_order',{ realname: user.realname });
     });
-
+    app.get('/add_customer', function (req, res) {
+        var user = req.session.user;
+        console.log(user.realname);
+        res.render('add_customer', { realname: user.realname });
+    });
+    app.get('/add_product', function (req, res) {
+        var user = req.session.user;
+        console.log(user.realname);
+        res.render('add_product', { realname: user.realname });
+    });
     app.get('/order_search', function (req, res) {
         var user = req.session.user ;
         console.log(user.realname);
         res.render('order_search',{ realname: user.realname });
     });
-
-    app.get('/excelindb', function (req, res) {
+    app.get('/add_production', function (req, res) {
         var user = req.session.user ;
         console.log(user.realname);
-        res.render('excelindb',{ realname: user.realname });
+        res.render('add_production',{ realname: user.realname });
     });
+    app.get('/excel_in_db', function (req, res) {
+        var user = req.session.user ;
+        console.log(user.realname);
+        res.render('excel_in_db',{ realname: user.realname });
+    });
+
 
     app.post('/login',function(req, res) {
         var username = req.body.username;
