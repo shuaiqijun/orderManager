@@ -37,12 +37,17 @@ exports.queryCustomerById = function (req,res) {
 
 exports.addCustomer = function (req,res) {
     console.log("addCustomer:"+req.body);
-    var name = req.body.name;
-    var catogory = req.body.catogory;
-    var creditRating = req.body.creditRating;
-    var invoiceInfo = req.body.invoiceInfo;
+    var customer_number = req.body.customer_number,
+        customer_name = req.body.customer_name,
+        customer_catogory = req.body.customer_catogory,                                    //类别
+        customer_address = req.body.customer_address,                                    //客户地址
+        business_area = req.body.business_area,                               //所属业务片区
+        salesman = req.body.salesman,                                     //所属业务员
+        payment_method = req.body.payment_method,                               //付款方式
+        creditRating = req.body.creditRating,                                 //信用等级
+        invoiceInfo = req.body.invoiceInfo;
 
-    CustomerModel.count({name:name},function(err,count){
+    CustomerModel.count({customer_number:customer_number},function(err,count){
         if(err){
             res.json({"code":-1,"msg":"data error"});
         }else{
@@ -51,9 +56,14 @@ exports.addCustomer = function (req,res) {
                 res.json({"code":-1,"msg":"用户存在"});
             }else{
                 var customer = new CustomerModel({
-                    name:name,
-                    catogory:catogory,
-                    creditRating:creditRating,
+                    customer_number:customer_number,
+                    customer_name:customer_name,
+                    customer_catogory:customer_catogory,                                    //类别
+                    customer_address:customer_address,                                    //客户地址
+                    business_area:business_area,                               //所属业务片区
+                    salesman:salesman,                                     //所属业务员
+                    payment_method:payment_method,                               //付款方式
+                    creditRating:creditRating,                                 //信用等级
                     invoiceInfo:invoiceInfo
                 });
                 customer.save(function (err) {
