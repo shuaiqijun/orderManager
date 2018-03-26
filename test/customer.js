@@ -1,5 +1,5 @@
 var CustomerModel = require("../model/customer.js");
-
+console.log(CustomerModel);
 /*
 var json = [{"customer_no":"10001","name":"百度科技", "catogory":"A", "creditRating":"A", "invoiceInfo":"123"},
     {"customer_no":"10002","name":"马化腾腾讯", "catogory":"A", "creditRating":"A", "invoiceInfo":"123"},
@@ -24,14 +24,16 @@ for(var i in json){
 }
 */
 
-var Query = CustomerModel.find({});
+/*var Query = CustomerModel.find({});
 CustomerModel.find().$where(function () {
     return this.customer_no =='10001' ||this.customer_no =='10002' ;
 }).exec(function(err,data){
    if(!err){
        console.log("data size:"+data.length);
    }
-});
+});*/
+
+
 
 
 
