@@ -5,11 +5,12 @@ var mongoose = require('mongoose'),
     DB_URL = 'mongodb://localhost:27017/test';
 mongoose.connect(DB_URL);
 var connection = mongoose.connection;
+
 /**
  * 连接成功
  */
 connection.on('connected', function () {
-    console.log('Mongoose connection open to ' + DB_URL);
+    //console.log('Mongoose connection open to ' + DB_URL);
 });
 
 /**

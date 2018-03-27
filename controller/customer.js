@@ -1,4 +1,4 @@
-var CustomerModel = require("../model/customer.js");
+var Customer = require("../model/customer.js");
 
 exports.queryCustomer = function (req,res) {
     console.log("queryCustomer:"+req.query);
@@ -39,7 +39,7 @@ exports.addCustomer = function (req,res) {
     console.log("addCustomer:" + req.body);
     var customer_number = req.body.customer_number,
         customer_name = req.body.customer_name,
-        customer_catogory = req.body.customer_catogory,                                    //类别
+        customer_category = req.body.customer_catogory,                                    //类别
         customer_address = req.body.customer_address,                                    //客户地址
         business_area = req.body.business_area,                               //所属业务片区
         salesman = req.body.salesman,                                     //所属业务员
@@ -47,6 +47,7 @@ exports.addCustomer = function (req,res) {
         creditRating = req.body.creditRating,                                 //信用等级
         invoiceInfo = req.body.invoiceInfo;
 
+<<<<<<< HEAD
     CustomerModel.count({customer_number: customer_number}, function (err, count) {
         if (err) {
             res.json({"code": -1, "msg": "data error"});
@@ -72,6 +73,23 @@ exports.addCustomer = function (req,res) {
                     }
                 });
             }
+=======
+    Customer.addCustomer(new Customer.model({
+        customer_number:customer_number,          //编码
+        customer_name:customer_name,            //名称唯一
+        customer_category:customer_category,                               //类别
+        customer_address:customer_address,                                //客户地址
+        business_area:business_area,                                   //所属业务片区
+        salesman:salesman,                                        //所属业务员
+        payment_method:payment_method,                                  //付款方式
+        creditRating:creditRating,                                    //信用等级
+        invoiceInfo:invoiceInfo
+    }),function (err,msg) {
+        if(!err){
+            res.json({"code":0,"msg":""});
+        }else{
+            res.json({"code":-1,"msg":msg});
+>>>>>>> 41782998a98027b1f9e09399b19a858db1c0c383
         }
     });
 };
