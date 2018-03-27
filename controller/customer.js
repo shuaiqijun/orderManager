@@ -19,7 +19,7 @@ exports.queryCustomer = function (req,res) {
             });
         }
     });
-}
+};
 
 
 exports.queryCustomerById = function (req,res) {
@@ -32,11 +32,11 @@ exports.queryCustomerById = function (req,res) {
             res.json(data);
         }
     });
-}
+};
 
 
 exports.addCustomer = function (req,res) {
-    console.log("addCustomer:"+req.body);
+    console.log("addCustomer:" + req.body);
     var customer_number = req.body.customer_number,
         customer_name = req.body.customer_name,
         customer_catogory = req.body.customer_catogory,                                    //类别
@@ -47,34 +47,34 @@ exports.addCustomer = function (req,res) {
         creditRating = req.body.creditRating,                                 //信用等级
         invoiceInfo = req.body.invoiceInfo;
 
-    CustomerModel.count({customer_number:customer_number},function(err,count){
-        if(err){
-            res.json({"code":-1,"msg":"data error"});
-        }else{
-            if(count>0){
+    CustomerModel.count({customer_number: customer_number}, function (err, count) {
+        if (err) {
+            res.json({"code": -1, "msg": "data error"});
+        } else {
+            if (count > 0) {
                 console.log("用户存在");
-                res.json({"code":-1,"msg":"用户存在"});
-            }else{
+                res.json({"code": -1, "msg": "用户存在"});
+            } else {
                 var customer = new CustomerModel({
-                    customer_number:customer_number,
-                    customer_name:customer_name,
-                    customer_catogory:customer_catogory,                                    //类别
-                    customer_address:customer_address,                                    //客户地址
-                    business_area:business_area,                               //所属业务片区
-                    salesman:salesman,                                     //所属业务员
-                    payment_method:payment_method,                               //付款方式
-                    creditRating:creditRating,                                 //信用等级
-                    invoiceInfo:invoiceInfo
+                    customer_number: customer_number,
+                    customer_name: customer_name,
+                    customer_catogory: customer_catogory,                                    //类别
+                    customer_address: customer_address,                                    //客户地址
+                    business_area: business_area,                               //所属业务片区
+                    salesman: salesman,                                     //所属业务员
+                    payment_method: payment_method,                               //付款方式
+                    creditRating: creditRating,                                 //信用等级
+                    invoiceInfo: invoiceInfo
                 });
                 customer.save(function (err) {
-                    if(!err){
-                        res.json({"code":0,"msg":""});
+                    if (!err) {
+                        res.json({"code": 0, "msg": ""});
                     }
                 });
             }
         }
     });
-}
+};
 
 exports.delCustomerById = function (req,res) {
     console.log("delCustomerById");
@@ -86,7 +86,7 @@ exports.delCustomerById = function (req,res) {
             res.json({"code":0,"msg":""});
         }
     });
-}
+};
 
 exports.updateCustomer = function (req,res) {
 
@@ -94,4 +94,4 @@ exports.updateCustomer = function (req,res) {
 
 
     res.send("sucess:0");
-}
+};

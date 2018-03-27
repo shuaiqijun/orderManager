@@ -1,0 +1,80 @@
+<div class="search">
+    <div class="condition-wrapper layui-nav-item layui-form">
+        <div class="layui-input-inline">
+            <div class="customerDate">
+                <label>产品编码:</label>
+                <div class="layui-input-inline">
+                    <input name="ctl00$content$txtCode" type="text" id="content_productNumber" placeholder="请输入产品编码"  class="customer-number-input" />
+                </div>
+                <div class="layui-input-inline">
+                    <label class="customerNumber">产品名称:</label>
+                    <div class="layui-input-inline">
+                        <input name="id" type="text" id="content_productName" placeholder="请输入产品名称"  class="customer-number-input"  autocomplete="off" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    <label class="customerNumber">产品牌号:</label>
+                    <div class="layui-input-inline">
+                        <input name="id" type="text" id="content_productGrade" placeholder="请输入产品牌号"  class="customer-number-input"  autocomplete="off" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    <label class="customerNumber">产品类型:</label>
+                    <div class="layui-input-inline">
+                        <input name="id" type="text" id="content_productCatogory" placeholder="请输入产品类别"  class="customer-number-input"  autocomplete="off" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    <label>产品规格:</label>
+                    <div class="layui-input-inline" style="width:80px; font-size:12px">
+                        <select name="specifications" id="specifications" placeholder="产品规格" class="customer-number-input" >
+                            <option value="0">请选择</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-input-inline" style="margin-left: 25px; font-size:12px">
+                    <label>产品参数:</label>
+                    <div class="layui-input-inline" style="width: 100px">
+                        <select name="customer_catogory" id="customer_catogory" placeholder="产品参数"
+                                onchange="show_catogory(this.options[this.options.selectedIndex].value)">
+                            <option value="0">请选择</option>
+                            <option value="A">集团客户</option>
+                            <option value="B">签约客户</option>
+                            <option value="C">测试客户</option>
+                            <option value="D">其他客户</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="customerDate">
+                <div class="layui-input-inline">
+                    <label>颜色:</label>
+                    <div class="layui-input-inline" style="width: 80px; font-size:12px">
+                        <select name="customer_name">
+                            <option value="0">请选择</option>
+                            <option value="华东">红</option>
+                            <option value="华南">黄</option>
+                            <option value="华西">蓝</option>
+                            <option value="华北">黑</option>
+                            <option value="华中">白</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-input-inline" style="margin-left: 30px;">
+            <button name="" data-type="reload" id="content_btnFind" class="btn btn-primary">查询</button>
+            <button type="button" id="addProduct1" class="btn btn-success">新增</button>
+            <button id="productExcelInDB" type="button" class="btn btn-info">导入</button>
+            <button id="productExcelToDB" type="button" class="btn btn-info" onclick="downloadExl(jsono)">导出</button>
+            <button id="btnPrint" type="button" value="打印" class="btn btn-info">打印</button>
+        </div>
+    </div>
+</div>
+<div>
+    <table class="layui-hide" id="product_list" lay-filter="mtable"></table>
+</div>

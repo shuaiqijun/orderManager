@@ -1,62 +1,75 @@
 <div class="search">
-    <div class="condition-wrapper layui-nav-item">
-        <div class="layui-inline">
-            <label class="customerNumber">客户编码:</label>
-            <div class="layui-input-inline">
-                <input name="ctl00$content$txtCode" type="text" id="content_customerNumber" placeholder="请输入客户编码"  class="input_box1" />
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="orderNumber">客户名称:</label>
-            <div class="layui-input-inline">
-                <input name="ctl00$content$txtCardNo" type="text" id="content_customerName" placeholder="请输入客户名称"  class="input_box1" maxlength="8" onkeyup="value=value.replace(/[^\w\.\/]/ig,&#39;&#39;)" />
-            </div>
-        </div>
-        <div class="layui-input-inline" >
-            <label>客户类型:</label>
-            <div class="layui-input-inline">
-                <input type="text" name="customer_catogory" id="customer_catogory" lay-verify="required" placeholder="请输入客户类型" autocomplete="off" class="order-number-input">
-            </div>
-        </div>
-        <div class="layui-input-inline" style="margin-right: 80px">
-            <label>信用等级:</label>
-            <div class="layui-input-inline">
-                <select name="creditRating" id="creditRating" lay-verify="required" placeholder="信用等级" class="order-number-input">
-                    <option value="">请选择</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                </select>
-            </div>
-        </div>
+    <div class="condition-wrapper layui-nav-item layui-form">
         <div class="layui-input-inline">
-            <label>业务片区:</label>
-            <div class="layui-input-inline">
-                <select name="customer_name" lay-verify="required">
-                    <option value="">请选择</option>
-                    <option value="华东">华东</option>
-                    <option value="华南">华南</option>
-                    <option value="华西">华西</option>
-                    <option value="华北">华北</option>
-                    <option value="华中">华中</option>
-                </select>
+            <div class="customerDate">
+                <label>客户编码:</label>
+                <div class="layui-input-inline">
+                    <input name="ctl00$content$txtCode" type="text" id="content_customerNumber" placeholder="请输入客户编码"  class="customer-number-input" />
+                </div>
+                <div class="layui-input-inline">
+                    <label>信用等级:</label>
+                    <div class="layui-input-inline" style="width:80px; font-size:12px">
+                        <select name="creditRating" id="creditRating" placeholder="信用等级" class="customer-number-input" >
+                            <option value="0">请选择</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-input-inline" style="margin-left: 25px; font-size:12px">
+                    <label>客户类型:</label>
+                    <div class="layui-input-inline" style="width: 100px">
+                        <select name="customer_catogory" id="customer_catogory" placeholder="信用等级"
+                                onchange="show_catogory(this.options[this.options.selectedIndex].value)">
+                            <option value="0">请选择</option>
+                            <option value="A">集团客户</option>
+                            <option value="B">签约客户</option>
+                            <option value="C">测试客户</option>
+                            <option value="D">其他客户</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="customerDate">
+                <div class="layui-input-inline">
+                    <label class="customerNumber">客户名称:</label>
+                    <div class="layui-input-inline">
+                        <input name="id" type="text" id="content_customerName" placeholder="请输入客户名称"  class="customer-number-input"  autocomplete="off" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    <label>业务片区:</label>
+                    <div class="layui-input-inline" style="width: 80px; font-size:12px">
+                        <select name="customer_name">
+                            <option value="0">请选择</option>
+                            <option value="华东">华东</option>
+                            <option value="华南">华南</option>
+                            <option value="华西">华西</option>
+                            <option value="华北">华北</option>
+                            <option value="华中">华中</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline" style="margin-left: 25px; font-size:12px">
+                        <label>业务员:</label>
+                        <div class="layui-input-inline" style="width: 100px; margin-left: 12px">
+                            <select name="" lay-verify="required">
+                                <option value="0">请选择</option>
+                                <option value="1">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="layui-input-inline" style="margin-left: 30px">
-            <label>业务员:</label>
-            <div class="layui-input-inline">
-                <select name="" lay-verify="required">
-                    <option value="">请选择</option>
-                </select>
-            </div>
+        <div class="layui-input-inline" style="margin-left: 30px;">
+            <button name="" data-type="reload" id="content_btnFind" class="btn btn-primary">查询</button>
+            <button type="button" id="addCustomer1" class="btn btn-success">新增客户</button>
+            <button id="customerExcelInDB" type="button" class="btn btn-info">导入客户</button>
+            <button id="customerExcelToDB" type="button" class="btn btn-info" onclick="downloadExl(jsono)">导出客户</button>
+            <button id="btnPrint" type="button" value="打印" class="btn btn-info">打印</button>
         </div>
-        &nbsp;
-        <input name="ctl00$content$btnFind" type="submit" id="content_btnFind" value="查询" class="btn btn-primary" />
-        <button type="button" id="addCustomer1" class="btn btn-success">新增客户</button>
-        <button id="customerExcelInDB" type="button" class="btn btn-info">导入客户</button>
-        <button id="customerExcelToDB" type="button" class="btn btn-info" onclick="downloadExl(jsono)">导出客户</button>
-        <button id="btnPrint" type="button" value="打印" class="btn btn-info">打印</button>
     </div>
 </div>
 <div>

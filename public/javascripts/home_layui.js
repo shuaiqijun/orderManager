@@ -7,22 +7,100 @@ layui.use(['element','table', 'layer','jquery'], function() {
 
     //客户管理 渲染 表格
     $('#customer_item').on('click', function() {
-        console.log("customer_item  click");
+        console.log("customer_list  click");
+        //方法级渲染
         table.render({
-            id: 'customerTableIn',
-            elem: '#data_table'
-            ,height: 485
-            ,url: '/home/customer' //数据接口
-            ,page: true //开启分页
-            ,cols: [[ //表头
-                {field: 'name', title: '客户名称', width:200,sort: true},
-                {field: 'catogory', title: '类别', width:200, sort: true},
-                {field: 'creditRating', title: '信用等级', width: 200, sort: true},
-                {field: 'invoiceInfo', title: '开票信息', width: 200},
-                {fixed: 'right', width:200, align:'center', toolbar: '#barDemo'}
+            elem: '#customer_list'
+            ,url: '/demo/table/user/'
+            ,cols: [[
+                {checkbox: true, fixed: true}
+                ,{field:'id', title: 'ID', width:80, sort: true, fixed: true}
+                ,{field:'username', title: '客户编码', width:100}
+                ,{field:'sex', title: '客户名称', width:180, sort: true}
+                ,{field:'city', title: '客户类型', width:100}
+                ,{field:'sign', title: '信用等级', width:100}
+                ,{field:'experience', title: '所属片区', sort: true, width:100}
+                ,{field:'score', title: '业务员', sort: true, width:90}
+                ,{field:'classify', title: '开票信息', width:180}
+                ,{field:'wealth', title: '备注', sort: true, width:135}
             ]]
+            ,id: 'reload_CustomerSearch'
+            ,page: true
+            ,height: 315
+        });
+
+        var $ = layui.$, active = {
+            reload: function(){
+                var demoReload = $('#demoReload');
+
+                //执行重载
+                table.reload('reload_CustomerSearch', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    ,where: {
+                        key: {
+                            id: demoReload.val()
+                        }
+                    }
+                });
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
         });
     });
+
+    //产品列表管理 渲染 表格
+    $('#product_item').on('click', function() {
+        console.log("product_list  click");
+        //方法级渲染
+        table.render({
+            elem: '#product_list'
+            ,url: '/demo/table/user/'
+            ,cols: [[
+                {checkbox: true, fixed: true}
+                ,{field:'id', title: 'ID', width:80, sort: true, fixed: true}
+                ,{field:'username', title: '产品编码', width:100}
+                ,{field:'sex', title: '产品名称', width:180, sort: true}
+                ,{field:'city', title: '产品牌号', width:100}
+                ,{field:'sign', title: '类别', width:100}
+                ,{field:'experience', title: '规格', sort: true, width:100}
+                ,{field:'score', title: '参数', sort: true, width:90}
+                ,{field:'classify', title: '颜色', width:180}
+                ,{field:'wealth', title: '备注', sort: true, width:135}
+            ]]
+            ,id: 'reload_ProductSearch'
+            ,page: true
+            ,height: 315
+        });
+
+        var $ = layui.$, active = {
+            reload: function(){
+                var demoReload = $('#demoReload');
+
+                //执行重载
+                table.reload('reload_ProductSearch', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    ,where: {
+                        key: {
+                            id: demoReload.val()
+                        }
+                    }
+                });
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
     //订单管理 渲染 表格
     $('#order_item').on('click', function() {
         console.log("order_item  click");
@@ -130,7 +208,6 @@ layui.use(['element','table', 'layer','jquery'], function() {
         }
     });*/
 
-
     //订单管理 渲染 表格
     $('#product_item').on('click', function() {
         console.log("product_item  click");
@@ -158,7 +235,7 @@ layui.use(['element','table', 'layer','jquery'], function() {
     });
 
     //新增订单弹层
-    $("#addOrder").click(function () {
+    $("#addOrder,#addOrder1").click(function () {
         var $ = layui.jquery;
         var that = this;
         layer.open({
@@ -189,39 +266,6 @@ layui.use(['element','table', 'layer','jquery'], function() {
             active[method] ? active[method].call(this, othis) : '';
         });
     });
-
-    $("#addOrder1").click(function () {
-        var $ = layui.jquery;
-        var that = this;
-        layer.open({
-            type: 2 //此处以iframe举例
-            , title: '新增订单'
-            , area: ['800px', '600px']
-            , shade: 0
-            , maxmin: true
-            , offset: [ //为了演示，随机坐标
-//                    Math.random() * ($(window).height() - 300)
-                30,
-//                    , Math.random() * ($(window).width() - 390)
-            ]
-            , content: '/add_order'
-//                , btn: [''] //只是为了演示
-//                , yes: function () {
-//                    layer.closeAll();
-//                }
-
-            , zIndex: layer.zIndex //重点1
-            , success: function (layero) {
-                layer.btnExcelInDB(layero); //重点2
-            }
-        });
-
-        $('#layerDemo .layui-btn').on('click', function () {
-            var othis = $(this), method = othis.data('method');
-            active[method] ? active[method].call(this, othis) : '';
-        });
-    });
-
 
 //新增客户弹层
     $("#add_customer").click(function () {
@@ -235,7 +279,7 @@ layui.use(['element','table', 'layer','jquery'], function() {
             , maxmin: true
             , offset: [ //为了演示，随机坐标
 //                    Math.random() * ($(window).height() - 300)
-                30,
+                30
 //                    , Math.random() * ($(window).width() - 390)
             ]
             , content: '/add_customer'
@@ -259,7 +303,7 @@ layui.use(['element','table', 'layer','jquery'], function() {
 
 
 //新增牌号弹层
-    $("#addproduct").click(function () {
+    $("#addproduct,#addProduct1").click(function () {
         var $ = layui.jquery;
         var that = this;
         layer.open({
@@ -477,9 +521,20 @@ function openOrderList(obj) {
 function openCustomerList(obj) {
     //隐藏主区域
     document.getElementById(obj).style.display="none";
-    if(orderlist_div.style.display != "none"){
+    if(order_list_div.style.display != "none"){
         document.getElementById('order_list_div').style.display = "none"
+    }else if (product_list_div.style.display != "none"){
+        document.getElementById('product_list_div').style.display = "none"
     }
     //显示主区域
     document.getElementById('customer_list_div').style.display = ""
+}
+function openProductList(obj) {
+    document.getElementById(obj).style.display="none";
+    if(order_list_div.style.display != "none"){
+        document.getElementById('order_list_div').style.display = "none"
+    }else if (customer_list_div.style.display != "none"){
+        document.getElementById('customer_list_div').style.display = "none"
+    }
+    document.getElementById('product_list_div').style.display = ""
 }

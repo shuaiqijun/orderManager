@@ -45,7 +45,21 @@ module.exports = function(app) {
         console.log(user.realname);
         res.render('excel_in_db',{ realname: user.realname });
     });
-
+    app.get('/customer_list', function (req, res) {
+        var user = req.session.user ;
+        console.log(user.realname);
+        res.render('customer_list',{ realname: user.realname });
+    });
+    app.get('/product_list', function (req, res) {
+        var user = req.session.user ;
+        console.log(user.realname);
+        res.render('product_list',{ realname: user.realname });
+    });
+    app.get('/production_list', function (req, res) {
+        var user = req.session.user ;
+        console.log(user.realname);
+        res.render('production_list',{ realname: user.realname });
+    });
     app.post('/addCustomerToDb', function(req, res) {
         var customer_number = req.body.customer_number,
                 customer_name = req.body.customer_name,
