@@ -1,8 +1,6 @@
 //客户信息
-var mongoose = require('./db.js'),
-    Schema = mongoose.Schema;
-
-var  CustomerSchema = new Schema({
+var mongoose = require('./db.js');
+var  CustomerSchema = new mongoose.Schema({
     customer_number:{ type:String, unique: true },          //编码
     customer_name:{ type:String, unique: true },            //名称唯一
     customer_category:String,                               //类别
@@ -14,37 +12,49 @@ var  CustomerSchema = new Schema({
     invoiceInfo:String                                      //开票信息
 });
 var Model = mongoose.model('Customer',CustomerSchema);
-exports.CustomerModel = Model;
+exports.model = Model;
 
-exports.customerExist = function (customer,callback) {
-    
+function customerIsUnique (customer,callback) {
+    Model.find({}).or([{ customer_number: customer.customer_number }, { customer_name:customer.customer_name }])
+        .exec(function(err,data){
+            if(!err){
+                console.log("customerIsUnique : data size:"+data.length);
+                callback(data.length==0);
+            }else {
+                callback(false);
+            }
+        })
 } ;
+exports.customerIsUnique = customerIsUnique ;
 
-exports.queryCustomerByPage = function (req,res) {
-    console.log("queryCustomer:" + req.query);
-/*    var limit = (Number)(req.query.limit);
-    var page = (Number)(req.query.page);
-    var Query = CustomerModel.find({});
+exports.queryAllCount = function (callback) {
+    Model.count(function (err,count) {
+        if (!err) {
+            console.log("CustomerModel count:"+count);
+            callback(err,count);
+        }else {
+            callback(err,"error");
+        }
+    });
+};
+
+exports.queryCustomerByPage = function (limit,page,callback) {
+    console.log("queryCustomerByPage:limit:" +limit+",page:"+page);
+    var Query = Model.find({});
     Query.skip((page - 1) * limit);
     Query.limit(limit);
-    Query.exec(function (err, docs) {
+    Query.exec(function (err, data) {
         if (err) {
-            res.json({"code": -1, "msg": "data error"});
+            callback(err,"error");
         } else {
-            CustomerModel.count(function (err, count) {
-                if (!err) {
-                    console.log("CustomerModel count");
-                    res.json({"code": 0, "msg": "", "count": count, "data": docs});
-                }
-            });
+            callback(err,data);
         }
-    });*/
-}
-
+    });
+};
 
 exports.queryCustomerById = function (objectId,callback) {
     console.log("queryCustomerById:"+objectId);
-    CustomerSchema.findOne({_id:objectId},function (err,data) {
+    Model.findOne({_id:objectId},function (err,data) {
         if(err){
             callback(err,"msg");
         }else{
@@ -52,6 +62,24 @@ exports.queryCustomerById = function (objectId,callback) {
         }
     });
 }
+
+
+exports.updateCustomer = function (customer,callback) {
+    console.log("updateCustomer:"+customer);
+    Model.findOne({_id:customer._id},function (err) {
+        if(err){
+            callback(err,"error");
+        }else{
+            customer.save(function (err) {
+                if(!err){
+                    callback(err,"success");
+                }else{
+                    callback(err,"error");
+                }
+            });
+        }
+    });
+};
 
 exports.delCustomerById =function (objectId,callback) {
     Model.remove({_id:objectId}, function (err) {
@@ -65,20 +93,18 @@ exports.delCustomerById =function (objectId,callback) {
 
 exports.addCustomer = function(customer,callback){
     console.log("customer:"+customer);
-    Model.customerExist(user,function (err) {
-        if(!err){
+    customerIsUnique(customer,function (isUnique) {
+        if(isUnique){
             customer.save(function (err) {
                 if(!err){
-                    callback(err,"msg:database");
+                    console.log("2");
+                    callback(err,customer);
                 }else{
-                    callback(null,null);
+                    callback(err,"database error");
                 }
             });
         }else{
-            callback(err,"msg:exist");
+            callback("error","datebase key is not Unique");
         }
     });
 };
-
-
-

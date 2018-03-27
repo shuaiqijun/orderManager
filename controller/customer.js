@@ -1,4 +1,4 @@
-var CustomerModel = require("../model/customer.js");
+var Customer = require("../model/customer.js");
 
 exports.queryCustomer = function (req,res) {
     console.log("queryCustomer:"+req.query);
@@ -39,7 +39,7 @@ exports.addCustomer = function (req,res) {
     console.log("addCustomer:"+req.body);
     var customer_number = req.body.customer_number,
         customer_name = req.body.customer_name,
-        customer_catogory = req.body.customer_catogory,                                    //类别
+        customer_category = req.body.customer_catogory,                                    //类别
         customer_address = req.body.customer_address,                                    //客户地址
         business_area = req.body.business_area,                               //所属业务片区
         salesman = req.body.salesman,                                     //所属业务员
@@ -47,31 +47,21 @@ exports.addCustomer = function (req,res) {
         creditRating = req.body.creditRating,                                 //信用等级
         invoiceInfo = req.body.invoiceInfo;
 
-    CustomerModel.count({customer_number:customer_number},function(err,count){
-        if(err){
-            res.json({"code":-1,"msg":"data error"});
+    Customer.addCustomer(new Customer.model({
+        customer_number:customer_number,          //编码
+        customer_name:customer_name,            //名称唯一
+        customer_category:customer_category,                               //类别
+        customer_address:customer_address,                                //客户地址
+        business_area:business_area,                                   //所属业务片区
+        salesman:salesman,                                        //所属业务员
+        payment_method:payment_method,                                  //付款方式
+        creditRating:creditRating,                                    //信用等级
+        invoiceInfo:invoiceInfo
+    }),function (err,msg) {
+        if(!err){
+            res.json({"code":0,"msg":""});
         }else{
-            if(count>0){
-                console.log("用户存在");
-                res.json({"code":-1,"msg":"用户存在"});
-            }else{
-                var customer = new CustomerModel({
-                    customer_number:customer_number,
-                    customer_name:customer_name,
-                    customer_catogory:customer_catogory,                                    //类别
-                    customer_address:customer_address,                                    //客户地址
-                    business_area:business_area,                               //所属业务片区
-                    salesman:salesman,                                     //所属业务员
-                    payment_method:payment_method,                               //付款方式
-                    creditRating:creditRating,                                 //信用等级
-                    invoiceInfo:invoiceInfo
-                });
-                customer.save(function (err) {
-                    if(!err){
-                        res.json({"code":0,"msg":""});
-                    }
-                });
-            }
+            res.json({"code":-1,"msg":msg});
         }
     });
 }
