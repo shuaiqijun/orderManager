@@ -47,33 +47,6 @@ exports.addCustomer = function (req,res) {
         creditRating = req.body.creditRating,                                 //信用等级
         invoiceInfo = req.body.invoiceInfo;
 
-<<<<<<< HEAD
-    CustomerModel.count({customer_number: customer_number}, function (err, count) {
-        if (err) {
-            res.json({"code": -1, "msg": "data error"});
-        } else {
-            if (count > 0) {
-                console.log("用户存在");
-                res.json({"code": -1, "msg": "用户存在"});
-            } else {
-                var customer = new CustomerModel({
-                    customer_number: customer_number,
-                    customer_name: customer_name,
-                    customer_catogory: customer_catogory,                                    //类别
-                    customer_address: customer_address,                                    //客户地址
-                    business_area: business_area,                               //所属业务片区
-                    salesman: salesman,                                     //所属业务员
-                    payment_method: payment_method,                               //付款方式
-                    creditRating: creditRating,                                 //信用等级
-                    invoiceInfo: invoiceInfo
-                });
-                customer.save(function (err) {
-                    if (!err) {
-                        res.json({"code": 0, "msg": ""});
-                    }
-                });
-            }
-=======
     Customer.addCustomer(new Customer.model({
         customer_number:customer_number,          //编码
         customer_name:customer_name,            //名称唯一
@@ -89,7 +62,6 @@ exports.addCustomer = function (req,res) {
             res.json({"code":0,"msg":""});
         }else{
             res.json({"code":-1,"msg":msg});
->>>>>>> 41782998a98027b1f9e09399b19a858db1c0c383
         }
     });
 };
