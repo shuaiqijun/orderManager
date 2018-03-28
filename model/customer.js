@@ -12,7 +12,7 @@ var  CustomerSchema = new mongoose.Schema({
     invoiceInfo:String                                      //开票信息
 });
 var Model = mongoose.model('Customer',CustomerSchema);
-exports.model = Model;
+//exports.model = Model;
 
 function customerIsUnique (customer,callback) {
     Model.find({}).or([{ customer_number: customer.customer_number }, { customer_name:customer.customer_name }])
@@ -25,7 +25,7 @@ function customerIsUnique (customer,callback) {
             }
         })
 } ;
-exports.customerIsUnique = customerIsUnique ;
+//exports.customerIsUnique = customerIsUnique ;
 
 exports.queryAllCount = function (callback) {
     Model.count(function (err,count) {
@@ -91,13 +91,14 @@ exports.delCustomerById =function (objectId,callback) {
     });
 };
 
-exports.addCustomer = function(customer,callback){
+exports.addCustomer = function(obj,callback){
+    console.log("customer jsonobj:"+obj);
+    var customer = new Model(obj);
     console.log("customer:"+customer);
     customerIsUnique(customer,function (isUnique) {
         if(isUnique){
             customer.save(function (err) {
                 if(!err){
-                    console.log("2");
                     callback(err,customer);
                 }else{
                     callback(err,"database error");

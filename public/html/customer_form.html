@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>新增客户</title>
-    <link rel="stylesheet" href="layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="stylesheets/add_customer.css" media="all">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../stylesheets/add_customer.css" media="all">
 </head>
 <body>
 <form class="layui-form" name="appendCustomer" id="appendCustomer">
@@ -46,59 +46,59 @@
         </div>
     </div>
     <div class="orderDate">
+        <div class="layui-input-inline">
+            <label>业务片区:</label>
             <div class="layui-input-inline">
-                <label>业务片区:</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="business_area" id="business_area" lay-verify="required" placeholder="业务片区" autocomplete="off" class="order-number-input">
-                    <!--<select name="business_area" id="business_area" lay-verify="required" >
-                        <option value="0">请选择</option>
-                        <option value="1">华东</option>
-                        <option value="2">华南</option>
-                        <option value="3">华中</option>
-                        <option value="4">华西</option>
-                        <option value="5">华北</option>
-                    </select>-->
-                </div>
+                <input type="text" name="business_area" id="business_area" lay-verify="required" placeholder="业务片区" autocomplete="off" class="order-number-input">
+                <!--<select name="business_area" id="business_area" lay-verify="required" >
+                    <option value="0">请选择</option>
+                    <option value="1">华东</option>
+                    <option value="2">华南</option>
+                    <option value="3">华中</option>
+                    <option value="4">华西</option>
+                    <option value="5">华北</option>
+                </select>-->
             </div>
-            <div class="layui-input-inline" style="margin-left: 30px">
-                <label>业务员:</label>
-                <div class="layui-input-inline">
+        </div>
+        <div class="layui-input-inline" style="margin-left: 30px">
+            <label>业务员:</label>
+            <div class="layui-input-inline">
 
-                    <input type="text" name="salesman" id="salesman" lay-verify="required" placeholder="业务片区" autocomplete="off" class="order-number-input">
-                    <!--<select name="salesman" id="salesman" lay-verify="required" >
-                        <option value="0">请选择</option>
-                        <option value="1">柯童柱</option>
-                        <option value="2">石浩宇</option>
-                    </select>-->
-                </div>
+                <input type="text" name="salesman" id="salesman" lay-verify="required" placeholder="业务片区" autocomplete="off" class="order-number-input">
+                <!--<select name="salesman" id="salesman" lay-verify="required" >
+                    <option value="0">请选择</option>
+                    <option value="1">柯童柱</option>
+                    <option value="2">石浩宇</option>
+                </select>-->
             </div>
+        </div>
     </div>
     <div class="orderDate">
+        <div class="layui-input-inline">
+            <label>付款方式:</label>
             <div class="layui-input-inline">
-                <label>付款方式:</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="payment_method" id="payment_method" lay-verify="required" placeholder="付款方式" autocomplete="off" class="order-number-input">
-                    <!--<select name="payment_method" id="payment_method" lay-verify="required" onchange="show_pay(this.options[this.options.selectedIndex].value)">
-                        <option value="0">请选择付款方式</option>
-                        <option value="1">30天月结</option>
-                        <option value="2">60天结算</option>
-                        <option value="3">90天结算</option>
-                    </select>-->
-                </div>
+                <input type="text" name="payment_method" id="payment_method" lay-verify="required" placeholder="付款方式" autocomplete="off" class="order-number-input">
+                <!--<select name="payment_method" id="payment_method" lay-verify="required" onchange="show_pay(this.options[this.options.selectedIndex].value)">
+                    <option value="0">请选择付款方式</option>
+                    <option value="1">30天月结</option>
+                    <option value="2">60天结算</option>
+                    <option value="3">90天结算</option>
+                </select>-->
             </div>
+        </div>
     </div>
 
-        <div class="layui-form-item layui-form-text">
-            <label class="kaipiao">开票信息:</label>
-            <div class="">
+    <div class="layui-form-item layui-form-text">
+        <label class="kaipiao">开票信息:</label>
+        <div class="">
                 <textarea id="invoiceInfo" name="invoiceInfo" placeholder=" 例子：
                 公司名称：湖北科普达高分子材料股份有限公司
                 统一社会信用代码：91421127670363521C
                 公司地址：湖北黄梅县小池镇沿江路168号
                 公司电话：0713-3433606
                 开户行及账号：农行黄梅县支行城中分理处  17-664601040001168" class="kaipiao-text" lay-verify="required"></textarea>
-            </div>
         </div>
+    </div>
 
     <div class="layui-form-item" style="margin-left: 180px">
         <div class="layui-input-block" style="margin-left: 60px">

@@ -417,7 +417,7 @@ layui.use(['element','table', 'layer','jquery'], function() {
             elem:'#orderSendDate'
         });
     });
-});
+
 //layui  模块结束
 
 //输入框限制输入类型  只能输入数字
@@ -538,3 +538,26 @@ function openProductList(obj) {
     }
     document.getElementById('product_list_div').style.display = ""
 }
+
+    $(function () {
+        $("#addCustomerToDb").click(function () {
+            console.log("addCustomerToDb click");
+            $.ajax({
+                url: '/addCustomerToDb',
+                type: 'POST',
+                data: {
+                    customer_number: $('#customer_number').val(),
+                    customer_name: $('#customer_name').val(),
+                    customer_catogory: $('#customer_catogory').val(),
+                    creditRating: $('#creditRating').val(),
+                    customer_address: $('#customer_address'),
+                    business_area: $('#business_area'),
+                    salesman: $('#salesman'),
+                    payment_method: $('#payment_method'),
+                    invoiceInfo: $('#invoiceInfo')
+                }
+            })
+        })
+    })
+
+});

@@ -2,8 +2,7 @@ var express = require('express');
 var routers = express.Router();
 var UserModel = require('../model/user.js');
 var ProductModel = require('../model/product.js');
-var CustomerModel = require("../model/customer.js");
-var CustomerCtr = require("../controller/customer.js");
+var Customer = require("../controller/customer.js");
 
 module.exports = function(app) {
     app.get('/', function (req, res) {
@@ -45,45 +44,9 @@ module.exports = function(app) {
         console.log(user.realname);
         res.render('excel_in_db',{ realname: user.realname });
     });
-    app.get('/customer_list', function (req, res) {
-        var user = req.session.user ;
-        console.log(user.realname);
-        res.render('customer_list',{ realname: user.realname });
-    });
-    app.get('/product_list', function (req, res) {
-        var user = req.session.user ;
-        console.log(user.realname);
-        res.render('product_list',{ realname: user.realname });
-    });
-    app.get('/production_list', function (req, res) {
-        var user = req.session.user ;
-        console.log(user.realname);
-        res.render('production_list',{ realname: user.realname });
-    });
-    app.post('/addCustomerToDb', function(req, res) {
-        var customer_number = req.body.customer_number,
-                customer_name = req.body.customer_name,
-                customer_catogory = req.body.customer_catogory,                                    //类别
-                    customer_address = req.body.customer_address,                                    //客户地址
-                    business_area = req.body.business_area,                               //所属业务片区
-                    salesman = req.body.salesman,                                     //所属业务员
-                    payment_method = req.body.payment_method,                               //付款方式
-                    creditRating = req.body.creditRating,                                 //信用等级
-                    invoiceInfo = req.body.invoiceInfo;
-        var datacustomer = new CustomerModel({
-            customer_number:customer_number,
-            customer_name:customer_name,
-            customer_catogory:customer_catogory,                                    //类别
-            customer_address:customer_address,                                    //客户地址
-            business_area:business_area,                               //所属业务片区
-            salesman:salesman,                                     //所属业务员
-            payment_method:payment_method,                               //付款方式
-            creditRating:creditRating,                                 //信用等级
-            invoiceInfo:invoiceInfo
-        });
-        CustomerCtr.addCustomer(datacustomer);
-        exports.addCustomer = addCustomer;
-    });
+
+    app.post('/addCustomerToDb', Customer.addCustomer);
+
 
     app.post('/login',function(req, res) {
         var username = req.body.username;

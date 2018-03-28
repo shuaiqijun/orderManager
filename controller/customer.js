@@ -36,34 +36,26 @@ exports.queryCustomerById = function (req,res) {
 
 
 exports.addCustomer = function (req,res) {
-    console.log("addCustomer:" + req.body);
-    var customer_number = req.body.customer_number,
-        customer_name = req.body.customer_name,
-        customer_category = req.body.customer_catogory,                                    //类别
-        customer_address = req.body.customer_address,                                    //客户地址
-        business_area = req.body.business_area,                               //所属业务片区
-        salesman = req.body.salesman,                                     //所属业务员
-        payment_method = req.body.payment_method,                               //付款方式
-        creditRating = req.body.creditRating,                                 //信用等级
-        invoiceInfo = req.body.invoiceInfo;
+    console.log("addCustomer:"+req.body);
+    var obj = {
+        customer_number:req.body.customer_number,          //编码
+        customer_name:req.body.customer_name,            //名称唯一
+        customer_category:req.body.customer_catogory,                               //类别
+        customer_address:req.body.customer_address,                                //客户地址
+        business_area:req.body.business_area,                                   //所属业务片区
+        salesman:req.body.salesman,                                        //所属业务员
+        payment_method:req.body.payment_method,                                  //付款方式
+        creditRating:req.body.creditRating,                                    //信用等级
+        invoiceInfo:req.body.invoiceInfo
+    };
+    Customer.addCustomer(obj,function (err,msg) {
 
-    Customer.addCustomer(new Customer.model({
-        customer_number:customer_number,          //编码
-        customer_name:customer_name,            //名称唯一
-        customer_category:customer_category,                               //类别
-        customer_address:customer_address,                                //客户地址
-        business_area:business_area,                                   //所属业务片区
-        salesman:salesman,                                        //所属业务员
-        payment_method:payment_method,                                  //付款方式
-        creditRating:creditRating,                                    //信用等级
-        invoiceInfo:invoiceInfo
-    }),function (err,msg) {
         if(!err){
             res.json({"code":0,"msg":""});
         }else{
             res.json({"code":-1,"msg":msg});
         }
-    });
+    })
 };
 
 exports.delCustomerById = function (req,res) {

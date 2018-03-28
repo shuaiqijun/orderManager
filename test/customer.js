@@ -26,7 +26,7 @@ for(var i in json){
 
 
 
-var c =new Customer.model({
+/*var c =new Customer.model({
     customer_number:"1121ass2122222",          //编码
     customer_name:"asdassssdasdasd",            //名称唯一
     customer_category:"ssda",                               //类别
@@ -36,9 +36,21 @@ var c =new Customer.model({
     payment_method:"adsdasda",                                  //付款方式
     creditRating:"asdas",                                    //信用等级
     invoiceInfo:"dasdasd"
-});
+});*/
 
-Customer.addCustomer(c,function (err,msg) {
+var d = {
+    customer_number:"1121AAAass2122222",          //编码
+    customer_name:"asdassssAAAAdasdasd",            //名称唯一
+    customer_category:"ssda",                               //类别
+    customer_address:"dasdas",                                //客户地址
+    business_area:"dasdasd",                                   //所属业务片区
+    salesman:"dasdas",                                        //所属业务员
+    payment_method:"adsdasda",                                  //付款方式
+    creditRating:"asdas",                                    //信用等级
+    invoiceInfo:"dasdasd"
+};
+
+Customer.addCustomer(d,function (err,msg) {
     console.log(err+","+msg);
     if(!err){
         console.log("ssss")
