@@ -24,32 +24,34 @@
                 <input type="text" name="customer_name" id="customer_name" lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="order-number-input">
             </div>
         </div>
-        <div class="layui-input-inline" >
+    </div>
+    <div class="orderDate">
+        <div class="layui-input-inline" style="margin-right: 80px">
             <label>客户类型:</label>
             <div class="layui-input-inline">
                 <input type="text" name="customer_catogory" id="customer_catogory" lay-verify="required" placeholder="请输入客户类型" autocomplete="off" class="order-number-input">
             </div>
         </div>
-    </div>
-    <div class="orderDate">
         <div class="layui-input-inline" style="margin-right: 80px">
             <label>信用等级:</label>
             <div class="layui-input-inline">
                 <input type="text" name="creditRating" id="creditRating" lay-verify="required" placeholder="信用等级" autocomplete="off" class="order-number-input">
             </div>
         </div>
+    </div>
+    <div class="orderDate">
         <div class="layui-input-inline" >
             <label>客户地址:</label>
             <div class="layui-input-inline">
-                <input type="text" name="customer_address" id="customer_address" lay-verify="required" placeholder="请输入送货地址" autocomplete="off" class="order-number-input">
+                <input type="text" name="customer_address" id="customer_address" lay-verify="required" placeholder="请输入送货地址" autocomplete="off" class="order-number-input" style="width:520px">
             </div>
         </div>
     </div>
     <div class="orderDate">
-            <div class="layui-input-inline">
+            <div class="layui-input-inline" style="margin-right: 80px">
                 <label>业务片区:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="business_area" id="business_area" lay-verify="required" placeholder="业务片区" autocomplete="off" class="order-number-input">
+                    <input type="text" name="business_area" id="business_area" lay-verify="required" placeholder="业务片区" autocomplete="off" class="order-number-input" >
                     <!--<select name="business_area" id="business_area" lay-verify="required" >
                         <option value="0">请选择</option>
                         <option value="1">华东</option>
@@ -60,7 +62,7 @@
                     </select>-->
                 </div>
             </div>
-            <div class="layui-input-inline" style="margin-left: 30px">
+            <div class="layui-input-inline" style="margin-right: 80px">
                 <label>业务员:</label>
                 <div class="layui-input-inline">
 
@@ -108,41 +110,37 @@
     </div>
 </form>
 <script src="../javascripts/jquery-3.3.1.min.js"></script>
-<script src="../layui/layui.js"></script>
 <script>
-        $("#addCustomerToDb").click(function () {
-            console.log("addCustomerToDb click");
-            $.ajax({
-                url: '/addCustomerToDb',
-                type: 'POST',
-                data: {
-                    customer_number: $('#customer_number').val(),
-                    customer_name: $('#customer_name').val(),
-                    customer_catogory: $('#customer_catogory').val(),
-                    creditRating: $('#creditRating').val(),
-                    customer_address: $('#customer_address'),
-                    business_area: $('#business_area'),
-                    salesman: $('#salesman'),
-                    payment_method: $('#payment_method'),
-                    invoiceInfo: $('#invoiceInfo')
-                },
-                success:function (res) {
-                    console.log(res.toString());
-                    var result = eval('(' +  res.toString() + ')');
-                    if(result.code==0){
+    $("#addCustomerToDb").click(function () {
+        console.log("addCustomerToDb click");
+        $.ajax({
+            url: '/addCustomerToDb',
+            type: 'POST',
+            data:{
+                customer_number: "1", //$('#customer_number').val(),
+                customer_name: "1",//$('#customer_name').val(),
+                customer_category: "1",//$('#customer_catogory').val(),
+                creditRating:"1",// $('#creditRating').val(),
+                customer_address: "2",//$('#customer_address').val(),
+                business_area: "3",//$('#business_area').val(),
+                salesman:"5",//$('#salesman').val(),
+                payment_method:"6",// $('#payment_method').val(),
+                invoiceInfo: "3434",// $('#invoiceInfo').val()
+            },
+            success:function (res) {
+                console.log("hhhh");
+                console.log(res.code);
+                if(res.code==0){
 
-                    }else{
+                }else{
 
-                    }
-                },
-                error:function (err) {
-                    console.log(err);
                 }
-
-            })
-        })
-
-
+            },
+            error:function (err) {
+                console.log(err);
+            }
+        });
+    });
 </script>
 </body>
 </html>

@@ -1,7 +1,5 @@
-var express = require('express');
-var routers = express.Router();
 var UserModel = require('../model/user.js');
-var ProductModel = require('../model/product.js');
+//var ProductModel = require('../model/product.js');
 var Customer = require("../controller/customer.js");
 
 module.exports = function(app) {
@@ -45,8 +43,7 @@ module.exports = function(app) {
         res.render('excel_in_db',{ realname: user.realname });
     });
 
-    app.post('/addCustomerToDb', Customer.addCustomer);
-
+    app.post('/addCustomerToDb',Customer.addCustomer);
 
     app.post('/login',function(req, res) {
         var username = req.body.username;

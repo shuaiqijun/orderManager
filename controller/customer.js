@@ -36,7 +36,6 @@ exports.queryCustomerById = function (req,res) {
 
 
 exports.addCustomer = function (req,res) {
-    console.log("addCustomer:"+req.body);
     var obj = {
         customer_number:req.body.customer_number,          //编码
         customer_name:req.body.customer_name,            //名称唯一
@@ -49,11 +48,10 @@ exports.addCustomer = function (req,res) {
         invoiceInfo:req.body.invoiceInfo
     };
     Customer.addCustomer(obj,function (err,msg) {
-
         if(!err){
             res.json({"code":0,"msg":""});
         }else{
-            res.json({"code":-1,"msg":msg});
+            res.json({"code":-1,"msg":msg});                                                                                                                                                                                                                                                                                                                                                                                                
         }
     })
 };
@@ -71,9 +69,5 @@ exports.delCustomerById = function (req,res) {
 };
 
 exports.updateCustomer = function (req,res) {
-
-
-
-
     res.send("sucess:0");
 };
