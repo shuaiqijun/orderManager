@@ -15,6 +15,7 @@
     "express-session": "^1.15.6",
     "jquery": "^3.3.1",
     "layui-src": "^2.2.5",
+    "methods": "^1.1.2",
     "mongodb": "^3.0.3",
     "mongodb-core": "^3.0.3",
     "mongoose": "^5.0.9",

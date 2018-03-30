@@ -2,8 +2,7 @@ var express = require('express');
 var routers = express.Router();
 var UserModel = require('../model/user.js');
 var ProductModel = require('../model/product.js');
-var CustomerModel = require("../model/customer.js");
-var CustomerCtr = require("../controller/customer.js");
+var addCustomer = require('../controller/customer.js');
 
 module.exports = function(app) {
     app.get('/', function (req, res) {
@@ -60,30 +59,72 @@ module.exports = function(app) {
         console.log(user.realname);
         res.render('production_list',{ realname: user.realname });
     });
-    app.post('/addCustomerToDb', function(req, res) {
+
+    app.post('/addCustomerToDb', function (req, res) {
+        // console.log("addCustomer:" + req.body);
         var customer_number = req.body.customer_number,
-                customer_name = req.body.customer_name,
-                customer_catogory = req.body.customer_catogory,                                    //类别
-                    customer_address = req.body.customer_address,                                    //客户地址
-                    business_area = req.body.business_area,                               //所属业务片区
-                    salesman = req.body.salesman,                                     //所属业务员
-                    payment_method = req.body.payment_method,                               //付款方式
-                    creditRating = req.body.creditRating,                                 //信用等级
-                    invoiceInfo = req.body.invoiceInfo;
-        var datacustomer = new CustomerModel({
-            customer_number:customer_number,
-            customer_name:customer_name,
-            customer_catogory:customer_catogory,                                    //类别
-            customer_address:customer_address,                                    //客户地址
-            business_area:business_area,                               //所属业务片区
-            salesman:salesman,                                     //所属业务员
-            payment_method:payment_method,                               //付款方式
-            creditRating:creditRating,                                 //信用等级
-            invoiceInfo:invoiceInfo
-        });
-        CustomerCtr.addCustomer(datacustomer);
-        exports.addCustomer = addCustomer;
+            customer_name = req.body.customer_name,
+            customer_category = req.body.customer_category,                                    //类别
+            customer_address = req.body.customer_address,                                    //客户地址
+            business_area = req.body.business_area,                               //所属业务片区
+            salesman = req.body.salesman,                                     //所属业务员
+            payment_method = req.body.payment_method,                               //付款方式
+            creditRating = req.body.creditRating,                                 //信用等级
+            invoiceInfo = req.body.invoiceInfo;
+        // var customerData = {
+        //     customer_number:customer_number,          //编码
+        //     customer_name:customer_name,            //名称唯一
+        //     customer_category:customer_category,                               //类别
+        //     customer_address:customer_address,                                //客户地址
+        //     business_area:business_area,                                   //所属业务片区
+        //     salesman:salesman,                                        //所属业务员
+        //     payment_method:payment_method,                                  //付款方式
+        //     creditRating:creditRating,                                    //信用等级
+        //     invoiceInfo:invoiceInfo
+        // };
+        console.log(customer_number);
+        console.log(customer_name);
+        console.log(customer_address);
+        console.log(invoiceInfo);
+
+        addCustomer(customer_number);
+        addCustomer(customer_name);
+        addCustomer(customer_category);
+        addCustomer(customer_address);
+        addCustomer(business_area);
+        addCustomer(salesman);
+        addCustomer(payment_method);
+        addCustomer(creditRating);
+        addCustomer(invoiceInfo);
+
+        // var customer_number = req.body.customer_number,
+        //     customer_name = req.body.customer_name,
+        //     customer_category = req.body.customer_category,                                    //类别
+        //     customer_address = req.body.customer_address,                                    //客户地址
+        //     business_area = req.body.business_area,                               //所属业务片区
+        //     salesman = req.body.salesman,                                     //所属业务员
+        //     payment_method = req.body.payment_method,                               //付款方式
+        //     creditRating = req.body.creditRating,                                 //信用等级
+        //     invoiceInfo = req.body.invoiceInfo;
+        //
+        // console.log(customer_number);
+        //
+        // var dataCustomer = {
+        //     customer_number:customer_number,
+        //     customer_name:customer_name,
+        //     customer_category:customer_category,                                    //类别
+        //     customer_address:customer_address,                                    //客户地址
+        //     business_area:business_area,                               //所属业务片区
+        //     salesman:salesman,                                     //所属业务员
+        //     payment_method:payment_method,                               //付款方式
+        //     creditRating:creditRating,                                 //信用等级
+        //     invoiceInfo:invoiceInfo
+        // };
+        // console.log(dataCustomer);
+        // CustomerCtr.addCustomer(dataCustomer);
+        // res.redirect('/home');
     });
+
 
     app.post('/login',function(req, res) {
         var username = req.body.username;

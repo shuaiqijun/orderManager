@@ -281,12 +281,18 @@ layui.use(['element','table', 'layer','jquery'], function() {
 //                    Math.random() * ($(window).height() - 300)
                 30
 //                    , Math.random() * ($(window).width() - 390)
-            ]
-            , content: '/add_customer'
-//                , btn: [''] //只是为了演示
-//                , yes: function () {
-//                    layer.closeAll();
-//                }
+            ],
+            content: 'add_customer',
+            btn: ['提交','重置'], //只是为了演示
+            btnAlign: 'c',
+            yes: function () {
+
+                layer.closeAll();
+                },
+            btn2: function(){
+            layer.closeAll();
+            }
+
 
             , zIndex: layer.zIndex //重点1
             , success: function (layero) {
@@ -460,7 +466,7 @@ $(function() {
 
 
 //welcom time info
-(function getCurDate() {
+(function () {
     var mydate = new Date();
     var week;
     switch (mydate.getDay()) {
@@ -498,7 +504,7 @@ $(function() {
     }
 
     var ndate = "现在时间：" + years + "年" + month + "月" + days + "日 " + hours + ":" + minutes + ":" + seconds + " " + week;
-    document.getElementById('welcomtime').innerHTML = ndate;
+    document.getElementById('nowTime').innerHTML = ndate;
 
     // setInterval("getCurDate();",1000);
     console.log(ndate)

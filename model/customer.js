@@ -15,7 +15,9 @@ var Model = mongoose.model('Customer',CustomerSchema);
 exports.model = Model;
 
 function customerIsUnique (customer,callback) {
-    Model.find({}).or([{ customer_number: customer.customer_number }, { customer_name:customer.customer_name }])
+    Model.find({}).or([{ customer_number: customer.customer_number }, { customer_name:customer.customer_name },{customer_category:customer.customer_category},
+        {customer_address:customer.customer_address},{business_area:customer.business_area},{creditRating:customer.creditRating},{invoiceInfo:customer.invoiceInfo}
+        ,{salesman:customer.salesman},{payment_method:customer.payment_method}])
         .exec(function(err,data){
             if(!err){
                 console.log("customerIsUnique : data size:"+data.length);
@@ -24,7 +26,7 @@ function customerIsUnique (customer,callback) {
                 callback(false);
             }
         })
-} ;
+}
 exports.customerIsUnique = customerIsUnique ;
 
 exports.queryAllCount = function (callback) {
@@ -61,7 +63,7 @@ exports.queryCustomerById = function (objectId,callback) {
             callback(err,data);
         }
     });
-}
+};
 
 
 exports.updateCustomer = function (customer,callback) {
