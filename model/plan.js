@@ -11,8 +11,4 @@ var  PlanSchema = new Schema({
 });
 
 
-
-
-
-
 module.exports = mongoose.model('Plan',PlanSchema);

@@ -1,3 +1,8 @@
+body {
+    background: #fff;
+    width: 750px;
+}
+
 .orderDate {
     margin-top: 15px;
     margin-left: 15px;
@@ -39,13 +44,12 @@
     line-height:20px;
     text-align:left;
 }
-.kaipiao-text {
+.form_text_area {
     min-height:100px;
     border-radius:0 0 2px 2px;
     position:relative;
     border:1px solid #b2b2b2;
-    margin-left: 3px;
-    width: 600px;
+    margin-right: 100px;
     height: 200px;
     outline:0;-webkit-appearance:none;transition:all .3s;-webkit-transition:all .3s;box-sizing:border-box;
 }

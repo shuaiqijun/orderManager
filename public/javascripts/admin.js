@@ -4,62 +4,82 @@ layui.use(['element','table', 'layer','jquery'], function() {
         $ = layui.jquery,
         layer = layui.layer,
         table = layui.table;
+    //第一个实例
+    table.render({
+        elem: '#data_table',
+        height: 'full-150',
+        url: '../test/data1.json' ,//数据接口
+        page: true ,//开启分页
+        limit:10,
+        cols: [[ //表头
+            {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+            ,{field: 'username', title: '用户名', width:80}
+            ,{field: 'sex', title: '性别', width:80, sort: true}
+            ,{field: 'city', title: '城市', width:80}
+            ,{field: 'sign', title: '签名', width: 177}
+            ,{field: 'experience', title: '积分', width: 80, sort: true}
+            ,{field: 'score', title: '评分', width: 80, sort: true}
+            ,{field: 'classify', title: '职业', width: 80},
+            {field: 'wealth', title: '财富', width: 135, sort: true},
+            {fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+        ]]
+    });
+    //监听工具条
+    table.on('tool', function(obj){
+        var data = obj.data;
+        if(obj.event === 'detail'){
+            layer.msg('ID：'+ data.id + ' 的查看操作');
+        } else if(obj.event === 'del'){
+            layer.confirm('真的删除行么', function(index){
+                obj.del();
+                layer.close(index);
+            });
+        } else if(obj.event === 'edit'){
+            layer.alert('编辑行：<br>'+ JSON.stringify(data))
+        }
+    });
+
+    var $ = layui.$, active = {
+        getCheckData: function(){ //获取选中数据
+            var checkStatus = table.checkStatus('idTest')
+                ,data = checkStatus.data;
+            layer.alert(JSON.stringify(data));
+        }
+        ,getCheckLength: function(){ //获取选中数目
+            var checkStatus = table.checkStatus('idTest')
+                ,data = checkStatus.data;
+            layer.msg('选中了：'+ data.length + ' 个');
+        }
+        ,isAll: function(){ //验证是否全选
+            var checkStatus = table.checkStatus('idTest');
+            layer.msg(checkStatus.isAll ? '全选': '未全选')
+        }
+    };
+
+    $('.demoTable .layui-btn').on('click', function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+
     //新增客户弹层
-    $("#add_customer").click(function () {
-        layer.open({
+    $("#add_customer").on('click',function () {
+        var index =layer.open({
             type: 2 ,
             title: '新增客户',
+            id: "info_form",
             shadeClose: false,
-            shade: 0.8,
+            shade: 0.4,
             area: ['800px', '650px'],
             maxmin:false,
-            content: '../html/add_customer.html',
-            zIndex: layer.zIndex ,
+            resize:false,
+            content: '../html/customer_form.html'
         });
     });
 });
 
 
 
-function time(){
-    var mydate = new Date();
-    var week;
-    switch (mydate.getDay()) {
-        case 1:
-            week = "星期一";
-            break;
-        case 2:
-            week = "星期二";
-            break;
-        case 3:
-            week = "星期三";
-            break;
-        case 4:
-            week = "星期四";
-            break;
-        case 5:
-            week = "星期五";
-            break;
-        case 6:
-            week = "星期六";
-            break;
-        default:
-            week = "星期天";
-    }
 
-    function add_zero(temp) {
-        if (temp < 10) return "0" + temp;
-        else return temp;
-    }
-    var years = mydate.getFullYear();
-    var month = add_zero(mydate.getMonth() + 1);
-    var days = add_zero(mydate.getDate());
-    var hours = add_zero(mydate.getHours());
-    var minutes = add_zero(mydate.getMinutes());
-    var seconds = add_zero(mydate.getSeconds());
-    var ndate = "现在时间：" + years + "年" + month + "月" + days + "日 " + hours + ":" + minutes + ":" + seconds + " " + week;
-    document.getElementById("welcomtime").innerHTML=ndate;
-}
-    setInterval("time();",1000);
+
 
 
