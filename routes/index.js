@@ -1,6 +1,6 @@
 var UserModel = require('../model/user.js');
 //var ProductModel = require('../model/product.js');
-var Customer = require("../controller/customer.js");
+var Customer = require("../controller/customer_.js");
 
 module.exports = function(app) {
     app.get('/', function (req, res) {

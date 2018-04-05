@@ -1,4 +1,4 @@
-var CustomerModel = require("../model/customer.js");
+var Customer = require("../model/customer.js");
 
 exports.queryCustomer = function (req,res) {
     console.log("queryCustomer:"+req.query);

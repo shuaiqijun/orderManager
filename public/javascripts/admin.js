@@ -5,25 +5,28 @@ layui.use(['element','table', 'layer','jquery'], function() {
         layer = layui.layer,
         table = layui.table;
     //第一个实例
-    table.render({
-        elem: '#data_table',
-        height: 'full-150',
-        url: '../test/data1.json' ,//数据接口
-        page: true ,//开启分页
-        limit:10,
-        cols: [[ //表头
-            {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
-            ,{field: 'username', title: '用户名', width:80}
-            ,{field: 'sex', title: '性别', width:80, sort: true}
-            ,{field: 'city', title: '城市', width:80}
-            ,{field: 'sign', title: '签名', width: 177}
-            ,{field: 'experience', title: '积分', width: 80, sort: true}
-            ,{field: 'score', title: '评分', width: 80, sort: true}
-            ,{field: 'classify', title: '职业', width: 80},
-            {field: 'wealth', title: '财富', width: 135, sort: true},
-            {fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
-        ]]
-    });
+    function renderCustomer() {
+        table.render({
+            elem: '#data_table',
+            height: 'full-150',
+            url: '../test/data1.json' ,//数据接口
+            page: true ,//开启分页
+            limit:10,
+            cols: [[ //表头
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'username', title: '用户名', width:80}
+                ,{field: 'sex', title: '性别', width:80, sort: true}
+                ,{field: 'city', title: '城市', width:80}
+                ,{field: 'sign', title: '签名', width: 177}
+                ,{field: 'experience', title: '积分', width: 80, sort: true}
+                ,{field: 'score', title: '评分', width: 80, sort: true}
+                ,{field: 'classify', title: '职业', width: 80},
+                {field: 'wealth', title: '财富', width: 135, sort: true},
+                {fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+            ]]
+        });
+    } ;
+    renderCustomer();
     //监听工具条
     table.on('tool', function(obj){
         var data = obj.data;
